@@ -22,10 +22,9 @@
   .nav{position:sticky;top:0;z-index:5;background:rgba(243,239,232,.94);backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);margin:0 -26px 0;padding:11px 26px;display:flex;gap:16px;align-items:center}
   .nav .brand{font-family:Georgia,serif;font-weight:700;color:var(--terra)}
-  .nav a{color:#5c5348;text-decoration:none;font-size:14px;font-weight:600}
-  .nav a.active{color:var(--terra)}
-  .nav .spacer{flex:1}
-  .nav .cta{background:var(--terra);color:#fff;padding:6px 13px;border-radius:20px}
+  .nav a{color:#5c5348;text-decoration:none;font-size:14px;font-weight:600;padding:6px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;transition:all .12s}
+  .nav a:hover{border-color:var(--terra);color:var(--terra)}
+  .nav a.active{background:var(--terra);color:#fff;border-color:var(--terra)}
 
   header{padding:26px 0 4px}
   .datebar{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
@@ -51,6 +50,10 @@
   .card ul{margin:0;padding-left:18px;font-size:13.5px;color:#453f37}
   .card li{margin:3px 0}
   .card p{font-size:13.5px;color:#453f37;margin:0 0 6px}
+  ul.status{list-style:none;padding-left:0;margin:0;font-size:13.5px}
+  ul.status li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);color:#453f37}
+  ul.status li:last-child{border-bottom:none}
+  ul.status .pill{margin-left:0;flex:none}
   .flag{background:#fdeee9;border:1px solid #f1c7b8;border-radius:10px;padding:11px 14px;margin:12px 0 0;font-size:13.5px;color:#8f3d22}
   .muted{color:var(--muted)}
   .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:4px}
@@ -80,8 +83,6 @@
     <span class="brand">España 2026</span>
     <a href="index.html" class="active">Itinerary</a>
     <a href="Spain_Trip_2026_Hotel_Lookbook.html">Hotels</a>
-    <span class="spacer"></span>
-    <a href="Spain_Trip_2026_Hotel_Lookbook.html" class="cta">Hotel lookbook →</a>
   </nav>
 
   <header>
@@ -89,6 +90,7 @@
     <p class="sub">Gabe &amp; Judy · September 26 – October 13, 2026 · 16 nights</p>
     <p class="lede">Madrid → Barcelona → Granada → Ronda → Córdoba → Seville → home. Trains for the long hauls, a rental car through Andalusia. Slow days, long lunches, layered history.</p>
     <div class="datebar">
+      <span class="chip"><b>✈ Fly</b> Sep 26–27</span>
       <span class="chip"><b>Madrid</b> Sep 27–30</span>
       <span class="chip"><b>Barcelona</b> Sep 30–Oct 3</span>
       <span class="chip"><b>Granada</b> Oct 3–6</span>
@@ -98,11 +100,6 @@
       <span class="chip"><b>Madrid ✈</b> Oct 12–13</span>
     </div>
 
-    <a class="hotels-cta" href="Spain_Trip_2026_Hotel_Lookbook.html">
-      <span class="go">→</span>
-      <div class="t">Hotel Lookbook</div>
-      <div class="d">Vetted boutique picks + a 5-star splurge for each city, with photos and estimated nightly rates.</div>
-    </a>
   </header>
 
   <section class="blk">
@@ -205,9 +202,17 @@
     <div class="grid2">
       <div class="card">
         <h3>Booked / to book</h3>
-        <p>Flights <span class="pill done">done</span> · Alhambra, Nasrid 3 PM Oct 4 <span class="pill done">done</span></p>
-        <p>Hotels <span class="pill book">book now</span> · AVE trains ×3 <span class="pill book">book</span> · Sagrada Família <span class="pill book">Aug 2</span> · Royal Alcázar <span class="pill book">Aug 12</span> · Rental car <span class="pill book">book</span> · Mezquita <span class="pill book">book</span></p>
-        <p>Alhambra Oct 4 ↔ Oct 5 castle-day flip <span class="pill hold">on hold</span> — pending La Calahorra's October ticket release.</p>
+        <ul class="status">
+          <li><span>Flights</span> <span class="pill done">done</span></li>
+          <li><span>Alhambra — Nasrid 3 PM, Oct 4</span> <span class="pill done">done</span></li>
+          <li><span>Hotels</span> <span class="pill book">book now</span></li>
+          <li><span>AVE trains ×3</span> <span class="pill book">book</span></li>
+          <li><span>Sagrada Família</span> <span class="pill book">Aug 2</span></li>
+          <li><span>Royal Alcázar</span> <span class="pill book">Aug 12</span></li>
+          <li><span>Rental car</span> <span class="pill book">book</span></li>
+          <li><span>Mezquita-Catedral</span> <span class="pill book">book</span></li>
+          <li><span>Alhambra ↔ Oct 5 castle-day flip</span> <span class="pill hold">on hold</span></li>
+        </ul>
       </div>
       <div class="card">
         <h3>Before you go</h3>
