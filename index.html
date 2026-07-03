@@ -3,380 +3,225 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spain Trip 2026 — Hotel Lookbook</title>
+<title>Spain Trip 2026 — Itinerary</title>
 <style>
   :root{
-    --ink:#2b2622; --muted:#6b625a; --line:#e4ddd3; --paper:#fffdf9;
+    --ink:#2b2622; --muted:#6b625a; --line:#e4ddd3;
     --terra:#b5502e; --gold:#9a7b2e; --card:#ffffff;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:#f3efe8;color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .wrap{max-width:820px;margin:0 auto;padding:28px 26px 60px;}
-  h1{font-family:Georgia,"Times New Roman",serif;font-size:30px;margin:0 0 4px;letter-spacing:.2px}
-  h2{font-family:Georgia,serif;font-size:23px;margin:0;color:var(--terra)}
+  .wrap{max-width:820px;margin:0 auto;padding:0 26px 60px;}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:31px;margin:0 0 4px;letter-spacing:.2px}
+  h2{font-family:Georgia,serif;font-size:22px;margin:0;color:var(--terra)}
   .sub{color:var(--muted);font-size:14px;margin:2px 0 0}
-  .lede{font-size:14.5px;color:#4c453d;margin:14px 0 0}
-  .tip{background:#fff6e9;border:1px solid #f0dcbb;border-radius:10px;padding:10px 14px;margin:18px 0 0;font-size:13px;color:#7a5a1f}
-  .warn{background:#fdeee9;border:1px solid #f1c7b8;border-radius:10px;padding:10px 14px;margin:12px 0 0;font-size:13px;color:#8f3d22}
+  .lede{font-size:14.5px;color:#4c453d;margin:12px 0 0}
+
+  .nav{position:sticky;top:0;z-index:5;background:rgba(243,239,232,.94);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);margin:0 -26px 0;padding:11px 26px;display:flex;gap:16px;align-items:center}
+  .nav .brand{font-family:Georgia,serif;font-weight:700;color:var(--terra)}
+  .nav a{color:#5c5348;text-decoration:none;font-size:14px;font-weight:600}
+  .nav a.active{color:var(--terra)}
+  .nav .spacer{flex:1}
+  .nav .cta{background:var(--terra);color:#fff;padding:6px 13px;border-radius:20px}
+
+  header{padding:26px 0 4px}
   .datebar{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
   .chip{background:#efe8dc;border-radius:20px;padding:4px 11px;font-size:12px;color:#5c5348;white-space:nowrap}
-  .city{margin-top:30px;padding-top:6px;border-top:3px solid var(--terra)}
-  .cityhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
-  .cityhead .when{color:var(--muted);font-size:13px}
-  .hood{font-size:13.5px;color:#5c5348;margin:6px 0 4px;font-style:italic}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0;
-    box-shadow:0 1px 2px rgba(0,0,0,.04)}
-  .ph{display:block;width:100%;height:230px;object-fit:cover;background:#e9e2d6}
-  .ph.link{display:flex;align-items:center;justify-content:center;height:120px;text-decoration:none;
-    color:#8a7d6c;font-size:13px;background:repeating-linear-gradient(45deg,#efe9df,#efe9df 12px,#eae3d7 12px,#eae3d7 24px)}
-  .body{padding:13px 16px 16px}
-  .name{font-family:Georgia,serif;font-size:18px;margin:0}
-  .name a{color:var(--ink);text-decoration:none}
-  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 9px}
-  .t{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.2px}
-  .t.top{background:#eef4ec;color:#3f6b46}
-  .t.splurge{background:#f6efd9;color:#8a6d19}
-  .t.mich{background:#fbe9e4;color:#a23d21}
-  .t.view{background:#eceef3;color:#4a5678}
-  .t.park{background:#eae7f2;color:#5a4e86}
-  .t.plain{background:#efe8dc;color:#6b6156}
-  .t.cost{background:#eef6ef;color:#2f6b46;border:1px solid #cfe6d5;font-weight:700}
-  .blurb{font-size:13.5px;color:#453f37;margin:0}
-  .links{margin:10px 0 0;font-size:12.5px}
-  .links a{color:var(--terra);text-decoration:none;font-weight:600}
-  .links span{color:#c9bfb1;margin:0 8px}
-  .foot{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:#5c5348}
-  .foot h3{font-family:Georgia,serif;color:var(--terra);margin:0 0 6px}
+  .chip b{color:var(--terra)}
+
+  section.blk{margin-top:30px;padding-top:8px;border-top:3px solid var(--terra)}
+  section.blk > h2{margin-bottom:10px}
+
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#efe8dc;font-size:12px;letter-spacing:.4px;text-transform:uppercase;color:#6b6156}
+  td.date{white-space:nowrap;font-weight:700;color:#4c453d;width:74px}
+  td.city{white-space:nowrap;color:var(--terra);font-weight:600;width:120px}
+  tr.alh td{background:#fbf3e6}
+  tr:last-child td{border-bottom:none}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:620px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .card h3{font-family:Georgia,serif;font-size:16px;margin:0 0 8px;color:var(--ink)}
+  .card ul{margin:0;padding-left:18px;font-size:13.5px;color:#453f37}
+  .card li{margin:3px 0}
+  .card p{font-size:13.5px;color:#453f37;margin:0 0 6px}
+  .flag{background:#fdeee9;border:1px solid #f1c7b8;border-radius:10px;padding:11px 14px;margin:12px 0 0;font-size:13.5px;color:#8f3d22}
+  .muted{color:var(--muted)}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:4px}
+  .pill.done{background:#eef4ec;color:#3f6b46}
+  .pill.book{background:#f6efd9;color:#8a6d19}
+  .pill.hold{background:#fbe9e4;color:#a23d21}
+
+  .hotels-cta{display:block;margin:22px 0 0;background:var(--card);border:1px solid var(--line);
+    border-left:5px solid var(--terra);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--ink)}
+  .hotels-cta .t{font-family:Georgia,serif;font-size:18px;color:var(--terra)}
+  .hotels-cta .d{font-size:13.5px;color:#5c5348;margin-top:3px}
+  .hotels-cta .go{float:right;color:var(--terra);font-weight:700;font-size:20px}
+
+  .foot{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;font-size:12.5px;color:var(--muted)}
   a{color:var(--terra)}
   @media print{
     html,body{background:#fff}
+    .nav{position:static;background:#fff}
     .wrap{max-width:none;padding:0 6mm}
-    .no-print{display:none !important}
-    .city{page-break-before:always;border-top:2px solid var(--terra)}
-    .city.first{page-break-before:avoid}
-    .card{page-break-inside:avoid;box-shadow:none}
-    .ph{height:56mm}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <h1>Spain Trip 2026 — Hotel Lookbook</h1>
-  <p class="sub">Gabe &amp; Judy · September 26 – October 13, 2026 · boutique &amp; historic, old-town, a view where possible</p>
-  <p class="lede">One card per hotel: the <strong>★ top pick</strong> and alternatives for each city, plus a <strong>💎 5-star splurge</strong> (with Michelin dining where it exists). Photos load from each hotel's own website. <strong>Green price tags</strong> are rough per-night estimates for two in a double, late-Sept/Oct shoulder season — I can pull live quotes for any you shortlist.</p>
+  <nav class="nav">
+    <span class="brand">España 2026</span>
+    <a href="index.html" class="active">Itinerary</a>
+    <a href="Spain_Trip_2026_Hotel_Lookbook.html">Hotels</a>
+    <span class="spacer"></span>
+    <a href="Spain_Trip_2026_Hotel_Lookbook.html" class="cta">Hotel lookbook →</a>
+  </nav>
 
-
-  <div class="datebar">
-    <span class="chip">Madrid · Sep 27–30 · 3</span>
-    <span class="chip">Barcelona · Sep 30–Oct 3 · 3</span>
-    <span class="chip">Granada · Oct 3–6 · 3</span>
-    <span class="chip">Ronda · Oct 6–8 · 2</span>
-    <span class="chip">Córdoba · Oct 8–10 · 2</span>
-    <span class="chip">Seville · Oct 10–12 · 2</span>
-    <span class="chip">Madrid Airport · Oct 12–13 · 1</span>
-  </div>
-
-  <!-- MADRID -->
-  <section class="city first">
-    <div class="cityhead"><h2>Madrid</h2><span class="when">Sep 27 → 30 · 3 nights</span></div>
-    <p class="hood">Base in La Latina (oldest quarter, best tapas) or Barrio de las Letras.</p>
-
-    <div class="card">
-      <img class="ph" src="https://posadadelleondeoro.com/wp-content/uploads/FACHADA-ILUMINADA-HORIZONTAL.jpeg" alt="Posada del León de Oro façade">
-      <div class="body">
-        <p class="name"><a href="https://posadadelleondeoro.com/en/">Posada del León de Oro</a></p>
-        <div class="tags"><span class="t top">★ Top pick</span><span class="t cost">≈ €150–200/nt</span><span class="t plain">La Latina</span><span class="t view">On Cava Baja</span></div>
-        <p class="blurb">Restored 1880s coaching inn built into Madrid's medieval wall, on the city's best tapas street — glass-floored courtyard over the old ramparts. Exactly the brief.</p>
-        <div class="links"><a href="https://posadadelleondeoro.com/en/">Website</a><span>·</span><a href="https://posadadelleondeoro.com/en/gallery/">Photos</a></div>
-      </div>
+  <header>
+    <h1>Spain 2026</h1>
+    <p class="sub">Gabe &amp; Judy · September 26 – October 13, 2026 · 16 nights</p>
+    <p class="lede">Madrid → Barcelona → Granada → Ronda → Córdoba → Seville → home. Trains for the long hauls, a rental car through Andalusia. Slow days, long lunches, layered history.</p>
+    <div class="datebar">
+      <span class="chip"><b>Madrid</b> Sep 27–30</span>
+      <span class="chip"><b>Barcelona</b> Sep 30–Oct 3</span>
+      <span class="chip"><b>Granada</b> Oct 3–6</span>
+      <span class="chip"><b>Ronda</b> Oct 6–8</span>
+      <span class="chip"><b>Córdoba</b> Oct 8–10</span>
+      <span class="chip"><b>Seville</b> Oct 10–12</span>
+      <span class="chip"><b>Madrid ✈</b> Oct 12–13</span>
     </div>
 
-    <div class="card">
-      <a class="ph link" href="https://granhotelingles.com/en/">📷 View photos — granhotelingles.com</a>
-      <div class="body">
-        <p class="name"><a href="https://granhotelingles.com/en/">Gran Hotel Inglés</a></p>
-        <div class="tags"><span class="t cost">≈ €300–450/nt</span><span class="t plain">Barrio de las Letras</span><span class="t view">Rooftop</span></div>
-        <p class="blurb">Madrid's oldest luxury hotel (1886), Art Deco restoration, rooftop terrace, 300 m from Puerta del Sol. A grand historic landmark, not a chain.</p>
-        <div class="links"><a href="https://granhotelingles.com/en/">Website &amp; photos</a></div>
-      </div>
-    </div>
+    <a class="hotels-cta" href="Spain_Trip_2026_Hotel_Lookbook.html">
+      <span class="go">→</span>
+      <div class="t">Hotel Lookbook</div>
+      <div class="d">Vetted boutique picks + a 5-star splurge for each city, with photos and estimated nightly rates.</div>
+    </a>
+  </header>
 
-    <div class="card">
-      <a class="ph link" href="https://www.posadadeldragon.com/en/">📷 View photos — posadadeldragon.com</a>
-      <div class="body">
-        <p class="name"><a href="https://www.posadadeldragon.com/en/">Posada del Dragón</a></p>
-        <div class="tags"><span class="t cost">≈ €110–150/nt</span><span class="t plain">La Latina</span></div>
-        <p class="blurb">16th-c. inn integrating the 12th-c. city wall on a quiet corner. Smaller, gentler on price, strong character.</p>
-        <div class="links"><a href="https://www.posadadeldragon.com/en/">Website &amp; photos</a></div>
-      </div>
-    </div>
+  <section class="blk">
+    <h2>Day by day</h2>
+    <table>
+      <tr><th>Date</th><th>Overnight</th><th>Plan</th></tr>
+      <tr><td class="date">Sep 27</td><td class="city">Madrid</td><td>Arrive Madrid 12:15 PM, settle in, easy evening.</td></tr>
+      <tr><td class="date">Sep 28</td><td class="city">Madrid</td><td>Historic center, Royal Palace, tapas.</td></tr>
+      <tr><td class="date">Sep 29</td><td class="city">Madrid</td><td>Archaeology museum, Retiro Park.</td></tr>
+      <tr><td class="date">Sep 30</td><td class="city">Barcelona</td><td>AVE train from Madrid, Gothic Quarter.</td></tr>
+      <tr><td class="date">Oct 1</td><td class="city">Barcelona</td><td>Sagrada Família.</td></tr>
+      <tr><td class="date">Oct 2</td><td class="city">Barcelona</td><td>Food &amp; walking day.</td></tr>
+      <tr><td class="date">Oct 3</td><td class="city">Granada</td><td>Direct AVE, Sants 06:45 → Granada 13:11. Afternoon to settle before the Alhambra.</td></tr>
+      <tr class="alh"><td class="date">Oct 4</td><td class="city">Granada</td><td><strong>Full Alhambra day</strong> — gates at opening, Alcazaba, Generalife, Charles V Palace, lunch, <strong>3:00 PM Nasrid Palace</strong>, sunset at Mirador de San Nicolás.</td></tr>
+      <tr><td class="date">Oct 5</td><td class="city">Granada</td><td>Pick up rental car AM. Guadix cave quarter &amp; cathedral, winery (book ahead), long lunch, La Calahorra viewpoint, slow Albaicín evening.</td></tr>
+      <tr><td class="date">Oct 6</td><td class="city">Ronda</td><td>Drive to Ronda via Antequera &amp; El Torcal — dolmens, karst walk, lunch.</td></tr>
+      <tr><td class="date">Oct 7</td><td class="city">Ronda</td><td>White villages &amp; wineries.</td></tr>
+      <tr><td class="date">Oct 8</td><td class="city">Córdoba</td><td>Drive to Córdoba.</td></tr>
+      <tr><td class="date">Oct 9</td><td class="city">Córdoba</td><td>Mezquita &amp; Old Town.</td></tr>
+      <tr><td class="date">Oct 10</td><td class="city">Seville</td><td>Drive to Seville, drop rental car (Santa Justa), Plaza de España, tapas.</td></tr>
+      <tr><td class="date">Oct 11</td><td class="city">Seville</td><td>Royal Alcázar, long lunch, wander Santa Cruz, tapas.</td></tr>
+      <tr><td class="date">Oct 12</td><td class="city">Madrid ✈</td><td>Cathedral &amp; Giralda in the morning, evening AVE to the Madrid airport hotel.</td></tr>
+      <tr><td class="date">Oct 13</td><td class="city">Home</td><td>Fly home (MAD 10:25 AM).</td></tr>
+    </table>
 
-    <div class="card">
-      <img class="ph" src="https://media.ffycdn.net/eu/mandarin-oriental-hotel-group/YcUBiMwqnyCCijW56vVQ.jpg" alt="Mandarin Oriental Ritz, Madrid">
-      <div class="body">
-        <p class="name"><a href="https://www.mandarinoriental.com/en/madrid/hotel-ritz">💎 Mandarin Oriental Ritz Madrid</a></p>
-        <div class="tags"><span class="t splurge">💎 Splurge · 5★</span><span class="t cost">≈ €950–1,500/nt</span><span class="t mich">Deessa · 2 Michelin ★</span></div>
-        <p class="blurb">The city's Belle Époque grande dame (1910) in the Golden Triangle of Art. In-house Deessa by Quique Dacosta holds 2 Michelin stars — a landmark meal without leaving the building.</p>
-        <div class="links"><a href="https://www.mandarinoriental.com/en/madrid/hotel-ritz">Website</a><span>·</span><a href="https://www.mandarinoriental.com/en/madrid/hotel-ritz/gallery">Photos</a></div>
+    <div class="flag"><strong>Alhambra day — bring your original passports.</strong> Tickets are personal &amp; non-transferable; staff may check ID before the Nasrid Palaces. Don't leave passports in the hotel safe that day.</div>
+  </section>
+
+  <section class="blk">
+    <h2>Flights</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Outbound · Sat Sep 26</h3>
+        <ul>
+          <li>DSM → ATL — DL2094, dep 4:10 PM</li>
+          <li>ATL layover 2h 37m</li>
+          <li>ATL → MAD — DL0108, dep 9:55 PM</li>
+          <li><strong>Arrive Madrid Sun Sep 27, 12:15 PM</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Return · Tue Oct 13</h3>
+        <ul>
+          <li>MAD → AMS — DL9613, dep 10:25 AM</li>
+          <li>AMS layover 1h 30m → DTW (DL0137)</li>
+          <li>DTW layover 2h 36m → DSM (DL5087)</li>
+          <li><strong>Arrive DSM 8:52 PM</strong></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- BARCELONA -->
-  <section class="city">
-    <div class="cityhead"><h2>Barcelona</h2><span class="when">Sep 30 → Oct 3 · 3 nights</span></div>
-    <p class="hood">Gothic Quarter / El Born — medieval lanes, walk to the Cathedral and Born.</p>
-
-    <div class="card">
-      <img class="ph" src="https://www.mercerbarcelona.com/imagenes/mercer-barcelona-og.jpg" alt="Mercer Hotel Barcelona">
-      <div class="body">
-        <p class="name"><a href="https://www.mercerbarcelona.com/en/">Mercer Hotel Barcelona</a></p>
-        <div class="tags"><span class="t top">★ Top pick</span><span class="t cost">≈ €400–600/nt</span><span class="t plain">Gothic Quarter</span><span class="t view">Rooftop pool</span></div>
-        <p class="blurb">Medieval building incorporating a stretch of the Roman city wall — Roman→Moorish→Christian in one address. Rooftop plunge pool, 28 rooms, 5 min to the Cathedral.</p>
-        <div class="links"><a href="https://www.mercerbarcelona.com/en/">Website</a><span>·</span><a href="https://www.mercerbarcelona.com/en/explore-the-hotel/photo-gallery">Photos</a></div>
+  <section class="blk">
+    <h2>Getting around</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Trains</h3>
+        <ul>
+          <li>Madrid → Barcelona — AVE <span class="muted">(to book)</span></li>
+          <li>Barcelona → Granada — direct AVE, Sants 06:45 → Granada 13:11 (~6h26m)</li>
+          <li>Seville → Madrid — AVE <span class="muted">(to book)</span></li>
+        </ul>
       </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.hotelserrasbarcelona.com/">📷 View photos — hotelserrasbarcelona.com</a>
-      <div class="body">
-        <p class="name"><a href="https://www.hotelserrasbarcelona.com/">The Serras</a></p>
-        <div class="tags"><span class="t cost">≈ €350–500/nt</span><span class="t plain">Waterfront Gothic</span><span class="t view">Rooftop bar</span></div>
-        <p class="blurb">Design-forward boutique with the city's best-loved rooftop cocktail terrace over the marina. Walk everywhere.</p>
-        <div class="links"><a href="https://www.hotelserrasbarcelona.com/">Website &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.ohlaboutiquehotels.com/en/ohla-barcelona/">📷 View photos — ohlaboutiquehotels.com</a>
-      <div class="body">
-        <p class="name"><a href="https://www.ohlaboutiquehotels.com/en/ohla-barcelona/">Ohla Barcelona</a></p>
-        <div class="tags"><span class="t cost">≈ €260–380/nt</span><span class="t plain">Via Laietana</span><span class="t view">Rooftop pool</span></div>
-        <p class="blurb">5-star boutique, rooftop pool + bar, Michelin dining, steps from Palau de la Música. Contemporary, reliably excellent.</p>
-        <div class="links"><a href="https://www.ohlaboutiquehotels.com/en/ohla-barcelona/">Website &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.monumenthotel.com/en/gallery/">📷 View photos — monumenthotel.com</a>
-      <div class="body">
-        <p class="name"><a href="https://www.monumenthotel.com/en/">💎 Monument Hotel</a></p>
-        <div class="tags"><span class="t splurge">💎 Splurge · 5★</span><span class="t cost">≈ €500–750/nt</span><span class="t mich">Lasarte · 3 Michelin ★</span></div>
-        <p class="blurb">Grand-luxe 1890s Modernista mansion on Passeig de Gràcia, steps from Casa Batlló. Home to Lasarte (Martín Berasategui) — Barcelona's only 3-Michelin-star restaurant, in-house.</p>
-        <div class="links"><a href="https://www.monumenthotel.com/en/">Website</a><span>·</span><a href="https://www.monumenthotel.com/en/gallery/">Photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.ritzcarlton.com/en/hotels/bcnrz-hotel-arts-barcelona/overview/">📷 View photos — Hotel Arts (Ritz-Carlton)</a>
-      <div class="body">
-        <p class="name"><a href="https://www.ritzcarlton.com/en/hotels/bcnrz-hotel-arts-barcelona/overview/">Hotel Arts Barcelona <span style="font-weight:400;font-size:12px;color:#8a7d6c">(you asked)</span></a></p>
-        <div class="tags"><span class="t cost">≈ €400–650/nt</span><span class="t plain">Beachfront · corporate</span><span class="t mich">Enoteca · 2 Michelin ★</span></div>
-        <p class="blurb">A 154 m beachfront Ritz-Carlton tower — not old-town or boutique, but genuine luxury with sea-view rooms, pools and 2-star Enoteca. Best as a one-night beach break, not your base.</p>
-        <div class="links"><a href="https://www.ritzcarlton.com/en/hotels/bcnrz-hotel-arts-barcelona/overview/">Website &amp; photos</a></div>
+      <div class="card">
+        <h3>Rental car (Andalusia)</h3>
+        <ul>
+          <li>Pick up: Granada, morning Oct 5</li>
+          <li>Drop off: Seville (Santa Justa), on arrival Oct 10</li>
+          <li><strong>IDP required</strong> — both drivers; get at AAA before the trip</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- GRANADA -->
-  <section class="city">
-    <div class="cityhead"><h2>Granada</h2><span class="when">Oct 3 → 6 · 3 nights</span></div>
-    <p class="hood">Albaicín (Moorish old quarter) or the Alhambra hill — prioritize an Alhambra view.</p>
-
-    <div class="card">
-      <img class="ph" src="https://static-resources-elementor.mirai.com/wp-content/uploads/sites/1226/hotelcasa1800granada-newGallery-07.jpg" alt="Casa 1800 Granada">
-      <div class="body">
-        <p class="name"><a href="https://www.hotelcasa1800granada.com/en/">Casa 1800 Granada</a></p>
-        <div class="tags"><span class="t top">★ Top pick</span><span class="t cost">≈ €170–240/nt</span><span class="t plain">Albaicín</span><span class="t view">Alhambra-view roof</span></div>
-        <p class="blurb">Restored 16th-c. mansion in the heart of the Albaicín; rooftop terrace with a full Alhambra view for evening wine. Books out early for October.</p>
-        <div class="links"><a href="https://www.hotelcasa1800granada.com/en/">Website</a><span>·</span><a href="https://www.hotelcasa1800granada.com/en/gallery/">Photos</a></div>
+  <section class="blk">
+    <h2>Day trips &amp; en-route stops</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Granada · Guadix day (Oct 5)</h3>
+        <ul>
+          <li>Guadix — cave quarter, miradores, cathedral</li>
+          <li>Altiplano winery (Pago de Almaraes / Bodegas Muñana — book 3+ days ahead)</li>
+          <li>La Calahorra Castle — exterior viewpoint <span class="muted">(interior only if the on-hold Oct 4/5 flip happens)</span></li>
+        </ul>
       </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.hotelcasamorisca.com/en/">📷 View photos — hotelcasamorisca.com</a>
-      <div class="body">
-        <p class="name"><a href="https://www.hotelcasamorisca.com/en/">Casa Morisca</a></p>
-        <div class="tags"><span class="t cost">≈ €150–210/nt</span><span class="t plain">Foot of Albaicín</span><span class="t view">15th-c. Moorish house</span></div>
-        <p class="blurb">Beautifully restored 15th-c. Moorish house — original wooden ceilings, tilework, a still courtyard with pool. Pure layered-history atmosphere.</p>
-        <div class="links"><a href="https://www.hotelcasamorisca.com/en/">Website &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.alcubilladelcaracol.com/">📷 View photos — alcubilladelcaracol.com</a>
-      <div class="body">
-        <p class="name"><a href="https://www.alcubilladelcaracol.com/">Carmen de la Alcubilla del Caracol</a></p>
-        <div class="tags"><span class="t cost">≈ €180–260/nt</span><span class="t plain">Realejo · Alhambra hill</span><span class="t view">Garden views</span></div>
-        <p class="blurb">A traditional carmen — Andalusian villa with terraced gardens below the Alhambra, sweeping views to the Sierra Nevada. Serene and distinctive.</p>
-        <div class="links"><a href="https://www.alcubilladelcaracol.com/">Website &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="ph" src="https://cache.marriott.com/is/image/marriotts7prod/ak-grxpa-grxpa-suite-king-the35068-50987:Wide-Hor?wid=1336&amp;fit=constrain" alt="Hotel Palacio de Santa Paula, Granada">
-      <div class="body">
-        <p class="name"><a href="https://www.marriott.com/en-us/hotels/grxpa-hotel-palacio-de-santa-paula-autograph-collection/overview/">💎 Hotel Palacio de Santa Paula</a></p>
-        <div class="tags"><span class="t splurge">💎 Splurge · 5★</span><span class="t cost">≈ €250–380/nt</span><span class="t park">Valet parking</span></div>
-        <p class="blurb">Granada's finest 5-star: a 16th-c. convent fused with a 14th-c. Moorish house, serene cloister, on-site archaeology. Walkable to the Alhambra. (Granada city has no Michelin star — here the splurge is the hotel itself.)</p>
-        <div class="links"><a href="https://www.marriott.com/en-us/hotels/grxpa-hotel-palacio-de-santa-paula-autograph-collection/overview/">Website</a><span>·</span><a href="https://www.marriott.com/en-us/hotels/grxpa-hotel-palacio-de-santa-paula-autograph-collection/photos/">Photos</a></div>
+      <div class="card">
+        <h3>Ronda area</h3>
+        <ul>
+          <li>En route: Antequera dolmens &amp; El Torcal (Oct 6)</li>
+          <li>Setenil de las Bodegas</li>
+          <li>Zahara de la Sierra · Grazalema</li>
+          <li>Local wineries</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- RONDA -->
-  <section class="city">
-    <div class="cityhead"><h2>Ronda</h2><span class="when">Oct 6 → 8 · 2 nights</span></div>
-    <p class="hood">Arriving by car — get a room over the gorge, and mind the parking.</p>
-
-    <div class="card">
-      <img class="ph" src="https://www.hotelmontelirio.com/wp-content/blogs.dir/1513/files/home//vistas-1.jpg" alt="Hotel Montelirio, Ronda gorge view">
-      <div class="body">
-        <p class="name"><a href="https://www.hotelmontelirio.com/en/">Hotel Montelirio</a></p>
-        <div class="tags"><span class="t top">★ Top pick</span><span class="t cost">≈ €150–220/nt</span><span class="t view">Gorge-edge</span><span class="t park">On-site parking</span></div>
-        <p class="blurb">18th-c. mansion on the cliff edge, terraces looking straight down the gorge to the Puente Nuevo. Boutique-scale, small pool + hammam. The best view + character + parking combo in town.</p>
-        <div class="links"><a href="https://www.hotelmontelirio.com/en/">Website</a><span>·</span><a href="https://www.hotelmontelirio.com/en/photos/">Photos</a></div>
+  <section class="blk">
+    <h2>Reservations &amp; to-do</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Booked / to book</h3>
+        <p>Flights <span class="pill done">done</span> · Alhambra, Nasrid 3 PM Oct 4 <span class="pill done">done</span></p>
+        <p>Hotels <span class="pill book">book now</span> · AVE trains ×3 <span class="pill book">book</span> · Sagrada Família <span class="pill book">Aug 2</span> · Royal Alcázar <span class="pill book">Aug 12</span> · Rental car <span class="pill book">book</span> · Mezquita <span class="pill book">book</span></p>
+        <p>Alhambra Oct 4 ↔ Oct 5 castle-day flip <span class="pill hold">on hold</span> — pending La Calahorra's October ticket release.</p>
       </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://paradores.es/en/parador-de-ronda">📷 View photos — Parador de Ronda</a>
-      <div class="body">
-        <p class="name"><a href="https://paradores.es/en/parador-de-ronda">Parador de Ronda</a></p>
-        <div class="tags"><span class="t cost">≈ €180–260/nt</span><span class="t plain">By the bridge</span><span class="t view">Most dramatic terrace</span><span class="t park">Parking</span></div>
-        <p class="blurb">Right on the lip of the gorge beside the Puente Nuevo — the most dramatic terrace in Ronda. State-run and larger than boutique, in the former town hall.</p>
-        <div class="links"><a href="https://paradores.es/en/parador-de-ronda">Website &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.google.com/search?q=Soho+Boutique+Palacio+San+Gabriel+Ronda&amp;tbm=isch">📷 View photos — Palacio San Gabriel</a>
-      <div class="body">
-        <p class="name"><a href="https://www.google.com/search?q=Soho+Boutique+Palacio+San+Gabriel+Ronda">Soho Boutique Palacio San Gabriel</a></p>
-        <div class="tags"><span class="t cost">≈ €90–130/nt</span><span class="t plain">Old town</span></div>
-        <p class="blurb">18th-c. mansion, ~20 individual rooms, warm family-run feel in the heart of La Ciudad. No gorge view, but the most "historic house" character and gentler on price.</p>
-        <div class="links"><a href="https://www.google.com/search?q=Soho+Boutique+Palacio+San+Gabriel+Ronda">Search &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="ph" src="https://www.hotellafuente.com/wp-content/uploads/2018/10/hotel-fuente-de-la-higuera-ronda-home-1.jpg" alt="Hotel La Fuente de la Higuera, near Ronda">
-      <div class="body">
-        <p class="name"><a href="https://www.hotellafuente.com/">💎 The splurge here is the meal — Bardal (2★) · stay: La Fuente de la Higuera</a></p>
-        <div class="tags"><span class="t mich">Bardal · 2 Michelin ★</span><span class="t splurge">Rural luxe</span><span class="t cost">La Fuente ≈ €200–320/nt</span></div>
-        <p class="blurb">Ronda has no true 5-star, so make the splurge dinner at Bardal (Benito Gómez), 2 stars, in the old town. For a luxe rural night, La Fuente de la Higuera is an 11-room country house in an old olive mill, 6 km out.</p>
-        <div class="links"><a href="https://www.hotellafuente.com/">La Fuente website</a><span>·</span><a href="https://www.hotellafuente.com/gallery/">Photos</a></div>
+      <div class="card">
+        <h3>Before you go</h3>
+        <ul>
+          <li>International Driving Permit (AAA) — both drivers</li>
+          <li>Passport valid 3+ months past Oct 13 (6+ recommended)</li>
+          <li>Travel insurance</li>
+          <li>EES biometric registration at MAD on arrival — allow buffer. ETIAS not required this trip; re-check in August.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- CÓRDOBA -->
-  <section class="city">
-    <div class="cityhead"><h2>Córdoba</h2><span class="when">Oct 8 → 10 · 2 nights</span></div>
-    <p class="hood">The Judería, within a 5-min walk of the Mezquita. Pick a place built around a patio.</p>
-
-    <div class="card">
-      <a class="ph link" href="https://www.balcondecordoba.com/en/">📷 View photos — balcondecordoba.com</a>
-      <div class="body">
-        <p class="name"><a href="https://www.balcondecordoba.com/en/">Balcón de Córdoba</a></p>
-        <div class="tags"><span class="t top">★ Top pick</span><span class="t cost">≈ €200–300/nt</span><span class="t plain">Judería</span><span class="t view">Rooftop over Mezquita</span></div>
-        <p class="blurb">Intimate 10-room 17th-c. townhouse around three leafy courtyards, rooftop patio over the Mezquita-Catedral, archaeological fragments in the walls. The most romantic option.</p>
-        <div class="links"><a href="https://www.balcondecordoba.com/en/">Website &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="ph" src="https://cdn2.paraty.es/juderia-cordoba/images/2f627d6f54ee2f7=s1900" alt="Las Casas de la Judería de Córdoba patios">
-      <div class="body">
-        <p class="name"><a href="https://www.lascasasdelajuderiadecordoba.com/en/">Las Casas de la Judería</a></p>
-        <div class="tags"><span class="t cost">≈ €120–180/nt</span><span class="t plain">Judería</span><span class="t view">Patios &amp; galleries</span></div>
-        <p class="blurb">Five interconnected 15th-c. palace houses — a labyrinth of patios with orange trees and vaulted passages, &lt;5 min to the Mezquita. Authentically historic, good value.</p>
-        <div class="links"><a href="https://www.lascasasdelajuderiadecordoba.com/en/">Website</a><span>·</span><a href="https://www.lascasasdelajuderiadecordoba.com/en/images.html">Photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="ph" src="https://static-resources-elementor.mirai.com/wp-content/uploads/sites/2108/hospes-palacio-bailio-home-hero_1.webp" alt="Hospes Palacio del Bailío, Córdoba">
-      <div class="body">
-        <p class="name"><a href="https://www.hospes.com/en/palacio-bailio/">💎 Hospes Palacio del Bailío</a></p>
-        <div class="tags"><span class="t splurge">💎 Splurge · 5★</span><span class="t cost">≈ €220–340/nt</span><span class="t mich">Noor (nearby) · 3 Michelin ★</span></div>
-        <p class="blurb">16th-c. Renaissance palace with 1st-c. Roman ruins under a glass floor and a spa in the original Roman baths — layered history underfoot. Book a splurge dinner at Noor (Paco Morales, 3 stars) nearby.</p>
-        <div class="links"><a href="https://www.hospes.com/en/palacio-bailio/">Website</a><span>·</span><a href="https://www.hospes.com/en/palacio-bailio/photos-cordoba/">Photos</a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEVILLE -->
-  <section class="city">
-    <div class="cityhead"><h2>Seville</h2><span class="when">Oct 10 → 12 · 2 nights</span></div>
-    <p class="hood">Barrio Santa Cruz, beside the Cathedral — get a rooftop with a Giralda view for the finale.</p>
-
-    <div class="card">
-      <img class="ph" src="https://static-resources-elementor.mirai.com/wp-content/uploads/sites/1432/3.-HOTEL-CASA-1800-SEVILLA-PISCINA-VISTAS-GIRALDA-1-1.jpg" alt="Casa 1800 Sevilla rooftop pool with Giralda view">
-      <div class="body">
-        <p class="name"><a href="https://www.hotelcasa1800sevilla.com/en/">Casa 1800 Sevilla</a></p>
-        <div class="tags"><span class="t top">★ Top pick</span><span class="t cost">≈ €200–300/nt</span><span class="t plain">Santa Cruz</span><span class="t view">Giralda-view roof pool</span></div>
-        <p class="blurb">Restored 19th-c. mansion, rooftop terrace with a direct Cathedral/Giralda view and a plunge pool. Warm service, steps from the Cathedral.</p>
-        <div class="links"><a href="https://www.hotelcasa1800sevilla.com/en/">Website</a><span>·</span><a href="https://www.hotelcasa1800sevilla.com/en/gallery/">Photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.casadelpoeta.es/en/">📷 View photos — casadelpoeta.es</a>
-      <div class="body">
-        <p class="name"><a href="https://www.casadelpoeta.es/en/">Hotel Casa del Poeta</a></p>
-        <div class="tags"><span class="t cost">≈ €150–220/nt</span><span class="t plain">Santa Cruz</span><span class="t view">Columned courtyard</span></div>
-        <p class="blurb">17th-c. house hidden at the end of a tiny lane, built around a columned courtyard, rooftop over the old town. Exceptionally quiet for being 270 m from the Cathedral.</p>
-        <div class="links"><a href="https://www.casadelpoeta.es/en/">Website &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <a class="ph link" href="https://www.emecatedralmercer.com/en/">📷 View photos — emecatedralmercer.com</a>
-      <div class="body">
-        <p class="name"><a href="https://www.emecatedralmercer.com/en/">EME Catedral</a></p>
-        <div class="tags"><span class="t cost">≈ €250–400/nt</span><span class="t plain">Facing the Cathedral</span><span class="t view">Famous rooftop bar</span></div>
-        <p class="blurb">Cluster of restored houses with the city's most famous rooftop bar — the Giralda close enough to touch. Scene-y and design-led; a showstopper terrace for the finale.</p>
-        <div class="links"><a href="https://www.emecatedralmercer.com/en/">Website &amp; photos</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="ph" src="https://cache.marriott.com/content/dam/marriott-renditions/SVQLC/svqlc-exterior-1214-hor-wide.jpg?output-quality=70&amp;interpolation=progressive-bilinear&amp;downsize=1336px:*" alt="Hotel Alfonso XIII, Seville">
-      <div class="body">
-        <p class="name"><a href="https://www.marriott.com/en-us/hotels/svqlc-hotel-alfonso-xiii-a-luxury-collection-hotel-seville/overview/">💎 Hotel Alfonso XIII</a></p>
-        <div class="tags"><span class="t splurge">💎 Splurge · 5★</span><span class="t cost">≈ €400–700/nt</span><span class="t mich">ENA (Abellán) / Abantal ★</span></div>
-        <p class="blurb">Seville's palatial grande dame (1928), opulent Baroque-Moorish around a grand tiled courtyard, next to the Alcázar. In-house ENA by a Michelin-starred chef; Abantal a short hop. The showpiece finale.</p>
-        <div class="links"><a href="https://www.marriott.com/en-us/hotels/svqlc-hotel-alfonso-xiii-a-luxury-collection-hotel-seville/overview/">Website</a><span>·</span><a href="https://www.marriott.com/en-us/hotels/svqlc-hotel-alfonso-xiii-a-luxury-collection-hotel-seville/photos/">Photos</a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AIRPORT -->
-  <section class="city">
-    <div class="cityhead"><h2>Madrid Airport</h2><span class="when">Oct 12 → 13 · 1 night</span></div>
-    <p class="hood">Practical only — pick by shuttle reliability for the flight home.</p>
-
-    <div class="card">
-      <a class="ph link" href="https://www.hilton.com/en/hotels/madaphi-hilton-madrid-airport/">📷 View photos — Hilton Madrid Airport</a>
-      <div class="body">
-        <p class="name"><a href="https://www.hilton.com/en/hotels/madaphi-hilton-madrid-airport/">Hilton Madrid Airport</a></p>
-        <div class="tags"><span class="t top">★ Top pick</span><span class="t cost">≈ €130–190/nt</span><span class="t view">Shuttle from 4:00 AM</span></div>
-        <p class="blurb">Beside T1, transfer bus every 20 min from 4:00 AM — safest for an early departure. Alternatives: Meliá Barajas (shuttle 4:30 AM–1 AM) and Hotel Maydrit (24 h shuttle, best value). Confirm your departure terminal.</p>
-        <div class="links"><a href="https://www.hilton.com/en/hotels/madaphi-hilton-madrid-airport/">Website &amp; photos</a></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="foot">
-    <h3>Next steps</h3>
-    <p>1 · Dates are set — Sep 27 → Oct 13, matching your itinerary + KML.<br>
-    2 · Tell me which picks you like and I'll pull current October rates and help book — <strong>Granada (Albaicín) and Ronda (few gorge rooms) fill first</strong>.<br>
-    3 · Say if you want Hotel Arts slotted in as a one-night beach break rather than your Barcelona base.</p>
-  </div>
+  <div class="foot">Living planning document · dates and reservations will keep evolving. See the <a href="Spain_Trip_2026_Hotel_Lookbook.html">hotel lookbook</a> for where to stay.</div>
 
 </div>
 </body>
