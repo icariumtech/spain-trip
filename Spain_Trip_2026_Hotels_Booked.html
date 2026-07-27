@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spain Trip 2026 — Booked Hotels</title>
+<style>
+  :root{
+    --ink:#2b2622; --muted:#6b625a; --line:#e4ddd3; --paper:#fffdf9;
+    --terra:#b5502e; --gold:#9a7b2e; --card:#ffffff; --green:#2f6b46;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#f3efe8;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 26px 60px;}
+  .nav{position:sticky;top:0;z-index:5;background:rgba(243,239,232,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin:0 -26px 0;padding:11px 26px;display:flex;gap:16px;align-items:center}
+  .nav .brand{font-family:Georgia,serif;font-weight:700;color:var(--terra)}
+  .nav a{color:#5c5348;text-decoration:none;font-size:14px;font-weight:600}
+  .nav a.active{color:var(--terra)}
+  .nav .spacer{flex:1}
+  .nav .cta{background:var(--terra);color:#fff;padding:6px 13px;border-radius:20px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:30px;margin:18px 0 4px;letter-spacing:.2px}
+  h2{font-family:Georgia,serif;font-size:23px;margin:0;color:var(--terra)}
+  .sub{color:var(--muted);font-size:14px;margin:2px 0 0}
+  .lede{font-size:14.5px;color:#4c453d;margin:14px 0 0}
+  .tip{background:#fff6e9;border:1px solid #f0dcbb;border-radius:10px;padding:10px 14px;margin:18px 0 0;font-size:13px;color:#7a5a1f}
+  .datebar{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+  .chip{background:#efe8dc;border-radius:20px;padding:4px 11px;font-size:12px;color:#5c5348;white-space:nowrap}
+  .summary{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0;padding:12px 14px;background:#eef6ef;border:1px solid #cfe6d5;border-radius:12px;font-size:13px;color:#2f5c40}
+  .summary b{color:#204a30}
+  .city{margin-top:26px;padding-top:6px;border-top:3px solid var(--terra)}
+  .cityhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .cityhead .when{color:var(--muted);font-size:13px}
+  .hood{font-size:13.5px;color:#5c5348;margin:6px 0 4px;font-style:italic}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .ph{display:block;width:100%;height:220px;object-fit:cover;background:#e9e2d6}
+  .ph.link{display:flex;align-items:center;justify-content:center;height:110px;text-decoration:none;
+    color:#8a7d6c;font-size:13px;background:repeating-linear-gradient(45deg,#efe9df,#efe9df 12px,#eae3d7 12px,#eae3d7 24px)}
+  .body{padding:13px 16px 16px}
+  .namerow{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .name{font-family:Georgia,serif;font-size:18px;margin:0}
+  .name a{color:var(--ink);text-decoration:none}
+  .status{font-size:11px;font-weight:700;letter-spacing:.4px;padding:4px 10px;border-radius:20px;white-space:nowrap;
+    background:#eef4ec;color:#3f6b46;border:1px solid #cfe6d5}
+  .status.flex{background:#eef2fb;color:#3a5488;border-color:#c9d5ef}
+  .status.reward{background:#f6efd9;color:#8a6d19;border-color:#e6d5a8}
+  .addr{font-size:12.5px;color:#6b625a;margin:6px 0 0}
+  .conf{margin:11px 0 0;border-top:1px solid var(--line);padding-top:10px;
+    display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:13px}
+  .conf .k{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+  .conf .v{color:var(--ink);font-weight:600;margin-top:1px}
+  .conf .v.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-weight:600}
+  .conf .full{grid-column:1 / -1}
+  .blurb{font-size:13px;color:#4c453d;margin:10px 0 0}
+  .links{margin:9px 0 0;font-size:12.5px}
+  .links a{color:var(--terra);text-decoration:none;font-weight:600}
+  .links span{color:#c9bfb1;margin:0 8px}
+  .foot{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:#5c5348}
+  .foot h3{font-family:Georgia,serif;color:var(--terra);margin:0 0 6px}
+  a{color:var(--terra)}
+  @media print{
+    html,body{background:#fff}
+    .nav{position:static;background:#fff}
+    .wrap{max-width:none;padding:0 6mm}
+    .no-print{display:none !important}
+    .city{page-break-before:always;border-top:2px solid var(--terra)}
+    .city.first{page-break-before:avoid}
+    .card{page-break-inside:avoid;box-shadow:none}
+    .ph{height:52mm}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav">
+    <span class="brand">España 2026</span>
+    <a href="index.html">Itinerary</a>
+    <a href="Spain_Trip_2026_Hotels_Booked.html" class="active">Hotels</a>
+    <span class="spacer"></span>
+    <a href="index.html" class="cta">← Itinerary</a>
+  </nav>
+
+  <h1>Spain Trip 2026 — Booked Hotels</h1>
+  <p class="sub">Gabe &amp; Judy · September 26 – October 13, 2026 · all seven stops confirmed</p>
+  <p class="lede">One card per booked hotel, with confirmation number, dates, room, price and cancellation status. All seven stops are locked. Six are non-refundable/prepaid; only Ronda (Catalonia) has free cancellation.</p>
+
+  <div class="datebar">
+    <span class="chip">Madrid · Sep 27–30 · 3</span>
+    <span class="chip">Barcelona · Sep 30–Oct 3 · 3</span>
+    <span class="chip">Granada · Oct 3–6 · 3</span>
+    <span class="chip">Ronda · Oct 6–8 · 2</span>
+    <span class="chip">Córdoba · Oct 8–10 · 2</span>
+    <span class="chip">Seville · Oct 10–12 · 2</span>
+    <span class="chip">Madrid Airport · Oct 12–13 · 1</span>
+  </div>
+
+  <div class="summary">
+    <span><b>7 / 7 hotels booked</b></span>
+    <span>·</span>
+    <span>Total lodging ≈ <b>€5,303</b> all-in (incl. €79.20 Barcelona city tax)</span>
+    <span>·</span>
+    <span>6 non-refundable · 1 free-cancel (Ronda)</span>
+  </div>
+
+  <!-- MADRID -->
+  <section class="city first">
+    <div class="cityhead"><h2>Madrid</h2><span class="when">Sep 27 → 30 · 3 nights</span></div>
+    <p class="hood">La Latina — on Cava Baja, Madrid's best tapas street, steps from Plaza Mayor.</p>
+
+    <div class="card">
+      <img class="ph" src="https://posadadelleondeoro.com/wp-content/uploads/FACHADA-ILUMINADA-HORIZONTAL.jpeg" alt="Posada del León de Oro façade">
+      <div class="body">
+        <div class="namerow">
+          <p class="name"><a href="https://posadadelleondeoro.com/en/">Posada del León de Oro</a></p>
+          <span class="status">✓ Confirmed · Non-refundable</span>
+        </div>
+        <p class="addr">Calle Cava Baja 12, 28005 Madrid · +34 91 119 14 94</p>
+        <div class="conf">
+          <div><div class="k">Confirmation</div><div class="v mono">MADmzmndi2mw-3344263</div></div>
+          <div><div class="k">Dates</div><div class="v">Sun Sep 27 → Wed Sep 30 · 3 nights</div></div>
+          <div><div class="k">Room</div><div class="v">Junior Suite · 2 adults</div></div>
+          <div><div class="k">Price</div><div class="v">€804.95 · prepaid in full</div></div>
+        </div>
+        <p class="blurb">Restored 1880s coaching inn built into Madrid's medieval wall. Check-in 3 PM / check-out before 12 PM.</p>
+        <div class="links"><a href="https://posadadelleondeoro.com/en/">Website</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARCELONA -->
+  <section class="city">
+    <div class="cityhead"><h2>Barcelona</h2><span class="when">Sep 30 → Oct 3 · 3 nights</span></div>
+    <p class="hood">Eixample — between Diagonal and Passeig de Gràcia, ~10 min to La Pedrera &amp; Casa Batlló.</p>
+
+    <div class="card">
+      <a class="ph link" href="https://www.ohlaboutiquehotels.com/en/ohla-eixample/">📷 View photos — ohlaboutiquehotels.com</a>
+      <div class="body">
+        <div class="namerow">
+          <p class="name"><a href="https://www.ohlaboutiquehotels.com/en/ohla-eixample/">Ohla Eixample</a></p>
+          <span class="status">✓ Confirmed · Non-refundable</span>
+        </div>
+        <p class="addr">Carrer de Còrsega 289, 08008 Barcelona</p>
+        <div class="conf">
+          <div><div class="k">Booking ID</div><div class="v mono">a9pga2dae2</div></div>
+          <div><div class="k">Dates</div><div class="v">Wed Sep 30 → Sat Oct 3 · 3 nights</div></div>
+          <div><div class="k">Room</div><div class="v">Design · Bed &amp; Breakfast · 2 adults</div></div>
+          <div><div class="k">Price</div><div class="v">€1,298.50 + €79.20 city tax = €1,377.70</div></div>
+        </div>
+        <p class="blurb">Design-forward boutique with a heated rooftop infinity pool &amp; cocktail bar (Sagrada Família views). Anniversary note on file (experience@ohlaeixample.com). Check-in 3 PM / check-out before 12 PM.</p>
+        <div class="links"><a href="https://www.ohlaboutiquehotels.com/en/ohla-eixample/">Website &amp; photos</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRANADA -->
+  <section class="city">
+    <div class="cityhead"><h2>Granada</h2><span class="when">Oct 3 → 6 · 3 nights</span></div>
+    <p class="hood">Foot of the Albaicín by Plaza Nueva — ideal for the Alhambra day and Albaicín evenings.</p>
+
+    <div class="card">
+      <img class="ph" src="https://static-resources-elementor.mirai.com/wp-content/uploads/sites/1226/hotelcasa1800granada-newGallery-07.jpg" alt="Casa 1800 Granada">
+      <div class="body">
+        <div class="namerow">
+          <p class="name"><a href="https://www.hotelcasa1800granada.com/en/">Hotel Casa 1800 Granada</a></p>
+          <span class="status">✓ Confirmed · Non-refundable</span>
+        </div>
+        <p class="addr">C/ Benalúa 11, 18010 Granada · +34 958 21 07 00</p>
+        <div class="conf">
+          <div><div class="k">Booking code</div><div class="v mono">26072751730</div></div>
+          <div><div class="k">Dates</div><div class="v">Sat Oct 3 → Tue Oct 6 · 3 nights</div></div>
+          <div><div class="k">Room</div><div class="v">Superior · Room only · 2 adults</div></div>
+          <div><div class="k">Price</div><div class="v">€1,117.20 · prepaid in full</div></div>
+        </div>
+        <p class="blurb">Restored 16th-c. mansion in the Albaicín. Room only (no breakfast). Check-in 3 PM / check-out 12 PM.</p>
+        <div class="links"><a href="https://www.hotelcasa1800granada.com/en/">Website</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RONDA -->
+  <section class="city">
+    <div class="cityhead"><h2>Ronda</h2><span class="when">Oct 6 → 8 · 2 nights</span></div>
+    <p class="hood">Town centre by the bullring, ~2 min to the Puente Nuevo.</p>
+
+    <div class="card">
+      <a class="ph link" href="https://www.cataloniahotels.com/en/hotel/catalonia-ronda">📷 View photos — cataloniahotels.com</a>
+      <div class="body">
+        <div class="namerow">
+          <p class="name"><a href="https://www.cataloniahotels.com/en/hotel/catalonia-ronda">Catalonia Ronda</a></p>
+          <span class="status flex">✓ Confirmed · Free cancel to Oct 5</span>
+        </div>
+        <p class="addr">Town centre by the Plaza de Toros, Ronda</p>
+        <div class="conf">
+          <div><div class="k">Booking code</div><div class="v mono">C2026072623393777016</div></div>
+          <div><div class="k">Dates</div><div class="v">Tue Oct 6 → Thu Oct 8 · 2 nights</div></div>
+          <div><div class="k">Room</div><div class="v">Superior · Room only · 2 adults</div></div>
+          <div><div class="k">Price</div><div class="v">€604.50 paid · €0 at hotel</div></div>
+        </div>
+        <p class="blurb">Protected modernist building with a rooftop infinity pool &amp; spa over the Tajo gorge. Free cancellation until Oct 5, 2026 — the only flexible booking.</p>
+        <div class="links"><a href="https://www.cataloniahotels.com/en/hotel/catalonia-ronda">Website &amp; photos</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓRDOBA -->
+  <section class="city">
+    <div class="cityhead"><h2>Córdoba</h2><span class="when">Oct 8 → 10 · 2 nights</span></div>
+    <p class="hood">In the Judería, ~2 min from the Mezquita.</p>
+
+    <div class="card">
+      <img class="ph" src="https://cdn2.paraty.es/juderia-cordoba/images/2f627d6f54ee2f7=s1900" alt="Las Casas de la Judería de Córdoba patios">
+      <div class="body">
+        <div class="namerow">
+          <p class="name"><a href="https://www.lascasasdelajuderiadecordoba.com/en/">Hotel Las Casas de la Judería de Córdoba</a></p>
+          <span class="status">✓ Confirmed · Non-refundable</span>
+        </div>
+        <p class="addr">Calle Tomás Conde 10, 14004 Córdoba · +34 957 202 095</p>
+        <div class="conf">
+          <div><div class="k">Booking ref</div><div class="v mono">504F368A9</div></div>
+          <div><div class="k">Dates</div><div class="v">Thu Oct 8 → Sat Oct 10 · 2 nights</div></div>
+          <div><div class="k">Room</div><div class="v">Room Basic · Room only · 2 adults</div></div>
+          <div><div class="k">Price</div><div class="v">€549 · confirm card charge</div></div>
+        </div>
+        <p class="blurb">Interconnected 15th-c. palace houses — a labyrinth of patios &lt;5 min from the Mezquita. Check-in 2 PM / check-out 12 PM. (Voucher showed €549 "pending" — verify the card was charged.)</p>
+        <div class="links"><a href="https://www.lascasasdelajuderiadecordoba.com/en/">Website</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEVILLE -->
+  <section class="city">
+    <div class="cityhead"><h2>Seville</h2><span class="when">Oct 10 → 12 · 2 nights</span></div>
+    <p class="hood">Central Arenal–Museo area, walkable to the cathedral &amp; old town.</p>
+
+    <div class="card">
+      <a class="ph link" href="https://www.gravina51.com/en/">📷 View photos — gravina51.com</a>
+      <div class="body">
+        <div class="namerow">
+          <p class="name"><a href="https://www.gravina51.com/en/">Hotel Gravina 51</a></p>
+          <span class="status">✓ Confirmed · Non-refundable</span>
+        </div>
+        <p class="addr">Calle Gravina 51, Sevilla · +34 954 217 501</p>
+        <div class="conf">
+          <div><div class="k">Booking ID</div><div class="v mono">nd3936uzm1</div></div>
+          <div><div class="k">Dates</div><div class="v">Sat Oct 10 → Mon Oct 12 · 2 nights</div></div>
+          <div><div class="k">Room</div><div class="v">Preferential · Room only · 2 adults</div></div>
+          <div><div class="k">Price</div><div class="v">€691.14 · prepaid in full</div></div>
+        </div>
+        <p class="blurb">Perks: free parking, pool access at Cavalta Boutique Hotel + welcome cocktail, early check-in/late checkout subject to availability.</p>
+        <div class="links"><a href="https://www.gravina51.com/en/">Website &amp; photos</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AIRPORT -->
+  <section class="city">
+    <div class="cityhead"><h2>Madrid Airport</h2><span class="when">Oct 12 → 13 · 1 night</span></div>
+    <p class="hood">By Barajas, near T4 for the Oct 13 flight home.</p>
+
+    <div class="card">
+      <a class="ph link" href="https://www.hilton.com/en/hotels/madaphi-hilton-madrid-airport/">📷 View photos — Hilton Madrid Airport</a>
+      <div class="body">
+        <div class="namerow">
+          <p class="name"><a href="https://www.hilton.com/en/hotels/madaphi-hilton-madrid-airport/">Hilton Madrid Airport</a></p>
+          <span class="status reward">✓ Confirmed · Honors reward</span>
+        </div>
+        <p class="addr">Avenida de la Hispanidad 2-4, 28042 Madrid · +34 911 534 000</p>
+        <div class="conf">
+          <div><div class="k">Confirmation</div><div class="v mono">3504529261</div></div>
+          <div><div class="k">Dates</div><div class="v">Mon Oct 12 → Tue Oct 13 · 1 night</div></div>
+          <div><div class="k">Room</div><div class="v">King Guestroom · 2 adults</div></div>
+          <div><div class="k">Price</div><div class="v">€158.75 · Hilton Honors reward</div></div>
+        </div>
+        <p class="blurb">Getting there: AVE lands Atocha 22:10 → free Cercanías (codes FJ3TU / RDTTB) to Aeropuerto T4 → hotel. Check-in 3 PM / check-out 12 PM.</p>
+        <div class="links"><a href="https://www.hilton.com/en/hotels/madaphi-hilton-madrid-airport/">Website &amp; photos</a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <h3>Notes</h3>
+    <p>All dates match the itinerary + KML. Six bookings are non-refundable/prepaid; <strong>Ronda (Catalonia) is free-cancel until Oct 5, 2026</strong>. Four Andalusian stops (Granada, Ronda, Córdoba, Seville) are <strong>room-only</strong> — no breakfast included. Still open on the trip: Sagrada Família, Royal Alcázar, Mezquita-Catedral, Barcelona→Granada AVE, and the rental car.</p>
+  </div>
+
+</div>
+</body>
+</html>
