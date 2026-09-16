@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spain Trip 2026 — Dining</title>
+<style>
+  :root{
+    --ink:#2b2622; --muted:#6b625a; --line:#e4ddd3; --paper:#fffdf9;
+    --terra:#b5502e; --gold:#9a7b2e; --card:#ffffff; --green:#2f6b46;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#f3efe8;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 26px 60px;}
+  .nav{position:sticky;top:0;z-index:5;background:rgba(243,239,232,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin:0 -26px 0;padding:11px 26px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .nav .brand{font-family:Georgia,serif;font-weight:700;color:var(--terra)}
+  .nav a{color:#5c5348;text-decoration:none;font-size:14px;font-weight:600}
+  .nav a.active{color:var(--terra)}
+  .nav .spacer{flex:1}
+  .nav .cta{background:var(--terra);color:#fff;padding:6px 13px;border-radius:20px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:30px;margin:18px 0 4px;letter-spacing:.2px}
+  h2{font-family:Georgia,serif;font-size:23px;margin:0;color:var(--terra)}
+  h3{font-family:Georgia,serif;font-size:15px;margin:22px 0 2px;color:#5c5348;
+     text-transform:uppercase;letter-spacing:.8px;font-weight:700}
+  .sub{color:var(--muted);font-size:14px;margin:2px 0 0}
+  .lede{font-size:14.5px;color:#4c453d;margin:14px 0 0}
+  .tip{background:#fff6e9;border:1px solid #f0dcbb;border-radius:10px;padding:10px 14px;margin:18px 0 0;font-size:13px;color:#7a5a1f}
+  .datebar{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+  .chip{background:#efe8dc;border-radius:20px;padding:4px 11px;font-size:12px;color:#5c5348;white-space:nowrap}
+  .chip a{color:#5c5348;text-decoration:none}
+  .summary{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0;padding:12px 14px;background:#eef6ef;border:1px solid #cfe6d5;border-radius:12px;font-size:13px;color:#2f5c40}
+  .summary b{color:#204a30}
+  .city{margin-top:30px;padding-top:6px;border-top:3px solid var(--terra);scroll-margin-top:96px}
+  .cityhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .cityhead .when{color:var(--muted);font-size:13px}
+  .hood{font-size:13.5px;color:#5c5348;margin:6px 0 4px;font-style:italic}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .body{padding:13px 16px 16px}
+  .namerow{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .name{font-family:Georgia,serif;font-size:18px;margin:0}
+  .name a{color:var(--ink);text-decoration:none}
+  .stars{color:var(--gold);font-size:14px;letter-spacing:1px;margin-left:5px}
+  .status{font-size:11px;font-weight:700;letter-spacing:.4px;padding:4px 10px;border-radius:20px;white-space:nowrap;
+    background:#f6efd9;color:#8a6d19;border:1px solid #e6d5a8}
+  .status.done{background:#eef4ec;color:#3f6b46;border-color:#cfe6d5}
+  .status.opt{background:#eef2fb;color:#3a5488;border-color:#c9d5ef}
+  .addr{font-size:12.5px;color:#6b625a;margin:6px 0 0}
+  .conf{margin:11px 0 0;border-top:1px solid var(--line);padding-top:10px;
+    display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:13px}
+  .conf .k{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+  .conf .v{color:var(--ink);font-weight:600;margin-top:1px}
+  .conf .full{grid-column:1 / -1}
+  .blurb{font-size:13px;color:#4c453d;margin:10px 0 0}
+  .warn{color:#a2401f}
+  .links{margin:9px 0 0;font-size:12.5px}
+  .links a{color:var(--terra);text-decoration:none;font-weight:600}
+  .links span.sep{color:#c9bfb1;margin:0 8px}
+  ul.plain{margin:9px 0 0;padding-left:18px;font-size:13px;color:#4c453d}
+  ul.plain li{margin:5px 0}
+  ul.plain .w{color:#8a7d6c;font-size:12.5px}
+  .foot{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:#5c5348}
+  .foot h3{font-family:Georgia,serif;color:var(--terra);margin:0 0 6px;text-transform:none;letter-spacing:0;font-size:19px}
+  ol.order{font-size:13px;color:#4c453d;padding-left:20px}
+  ol.order li{margin:6px 0}
+  a{color:var(--terra)}
+  @media (max-width:520px){ .conf{grid-template-columns:1fr} }
+  @media print{
+    html,body{background:#fff}
+    .nav{position:static;background:#fff}
+    .wrap{max-width:none;padding:0 6mm}
+    .no-print{display:none !important}
+    .city{page-break-before:always;border-top:2px solid var(--terra)}
+    .city.first{page-break-before:avoid}
+    .card{page-break-inside:avoid;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav">
+    <span class="brand">España 2026</span>
+    <a href="index.html">Itinerary</a>
+    <a href="Spain_Trip_2026_Hotels_Booked.html">Hotels</a>
+    <a href="Spain_Trip_2026_Dining.html" class="active">Dining</a>
+    <span class="spacer"></span>
+    <a href="index.html" class="cta">← Itinerary</a>
+  </nav>
+
+  <h1>Spain Trip 2026 — Dining</h1>
+  <p class="sub">Gabe &amp; Judy · September 26 – October 13, 2026 · researched Sep 13, Madrid rebuilt Sep 16</p>
+  <p class="lede">One section per stop, in trip order. Each opens with <strong>what needs a reservation and when</strong>, then what else is worth knowing in that city, then the tapas bars, wine bars and casual rooms that need no booking at all. Scope: roughly one starred meal per region, a ceiling of €200 per person before wine, no dietary restrictions.</p>
+
+  <div class="datebar">
+    <span class="chip"><a href="#madrid">Madrid</a></span>
+    <span class="chip"><a href="#barcelona">Barcelona</a></span>
+    <span class="chip"><a href="#granada">Granada</a></span>
+    <span class="chip"><a href="#ronda">Ronda</a></span>
+    <span class="chip"><a href="#cordoba">Córdoba</a></span>
+    <span class="chip"><a href="#seville">Seville</a></span>
+    <span class="chip"><a href="#road">On the road</a></span>
+    <span class="chip"><a href="#order">Booking order</a></span>
+  </div>
+
+  <div class="summary">
+    <span><b>The four anchors:</b></span>
+    <span>Noor · Córdoba · Fri Oct 9 · ★★★ · €130</span>
+    <span>·</span>
+    <span>Bardal · Ronda · Tue Oct 6 · ★★ · €195</span>
+    <span>·</span>
+    <span>Faralá · Granada · Sat Oct 3 · ★ · €123</span>
+    <span>·</span>
+    <span>Mont Bar · Barcelona · Fri Oct 2 · ★★ · €190</span>
+    <span>·</span>
+    <span>≈ <b>€638 pp</b> before wine</span>
+  </div>
+
+  <div class="tip"><strong>Nothing is booked yet.</strong> You are ~11 days out. Noor, Bardal, Mont Bar and Corral de la Morería are the same-day calls — the rest can follow this week. Full sequence at the <a href="#order">bottom of the page</a>.</div>
+
+  <!-- ===================== MADRID ===================== -->
+  <section class="city first" id="madrid">
+    <div class="cityhead"><h2>Madrid</h2><span class="when">Sep 27 → 30 · 3 nights</span></div>
+    <p class="hood">La Latina — you are staying <em>on</em> Cava Baja, Madrid's best tapas street. Almost everything below is a walk.</p>
+
+    <h3>Reserve these</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Sobrino de Botín</p>
+          <span class="status">Sun Sep 27 · book now</span>
+        </div>
+        <p class="addr">C/ Cuchilleros 17 · <strong>3 min walk</strong> · +34 913 664 217</p>
+        <div class="conf">
+          <div><div class="k">Open</div><div class="v">Daily 13:00–23:30</div></div>
+          <div><div class="k">Price</div><div class="v">Cochinillo €32.50 · ~€50–70 pp with wine</div></div>
+          <div class="full"><div class="k">Why this night</div><div class="v">You land 12:15 off the overnight from Atlanta — no tasting menu on day one</div></div>
+        </div>
+        <p class="blurb"><strong>Guinness-certified oldest restaurant in the world, 1725</strong>, 300 years marked in 2025. Yes it is heavily touristed; no, it is not fake — the wood-fired ovens are three centuries old and the roasting is the real thing. À la carte only. <strong>Order the cochinillo, not the cordero</strong> — consensus is clear the suckling pig is the dish. Hemingway ended <em>The Sun Also Rises</em> here. The 13:00 and 23:15 slots are the easiest to get.</p>
+        <div class="links"><a href="https://botin.es/en/">botin.es</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">La Tasquería <span class="stars">★</span></p>
+          <span class="status">Mon Sep 28 · book this week</span>
+        </div>
+        <p class="addr">C/ Modesto Lafuente 82, Chamberí · 15 min taxi (~€13) · +34 914 511 000</p>
+        <div class="conf">
+          <div><div class="k">Closed</div><div class="v">Sunday · Saturday dinner</div></div>
+          <div><div class="k">Menus</div><div class="v">~€76 avg · €69 / €85 / €115</div></div>
+        </div>
+        <p class="blurb">Javi Estévez's haute <em>casquería</em> — offal cooked seriously. The least reverent star in Madrid and the cheapest way into one. <strong>Monday is its quiet night</strong>, so this is very gettable at eleven days. Note it has moved from its old Salamanca address.</p>
+        <div class="links"><a href="https://latasqueria.com/">latasqueria.com</a><span class="sep">·</span><a href="https://www.thefork.es/restaurante/la-tasqueria-de-javi-estevez-r754440">TheFork</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Corral de la Morería Gastronómico <span class="stars">★</span></p>
+          <span class="status">Tue Sep 29 · call today</span>
+        </div>
+        <p class="addr">C/ Morería 17, La Latina · <strong>7 min walk</strong> · +34 913 658 446</p>
+        <div class="conf">
+          <div><div class="k">Closed</div><div class="v">Monday — open <strong>Sun &amp; Tue</strong></div></div>
+          <div><div class="k">Seatings</div><div class="v">20:00 / 20:30 / 21:00 / 21:30</div></div>
+          <div class="full"><div class="k">Price</div><div class="v warn">⚠ 2026 menu price unpublished — settle it on the call</div></div>
+        </div>
+        <p class="blurb">Four tables, <strong>eight diners a night</strong>, inside the world's most famous flamenco tablao, with a 1,200-reference sherry list. Chef David García. The only starred restaurant in your own neighbourhood. Eight seats means it goes first — <strong>call, don't just use the form</strong>.</p>
+        <p class="blurb"><strong class="warn">⚠ The flamenco is a separate booking</strong> — "dinner with show" and "dinner without show" are different products. Settle that on the same call. The only firm price I could find anywhere is a €309 pp package that bundles premium pairings and front-row seats; the €49/€65 figures in circulation predate the star.</p>
+        <p class="blurb"><strong>The overlap with Faralá:</strong> both are star-plus-flamenco. Since the show here is optional, the clean answer is to eat at both and take the show at one. Corral is the definitive grand tablao; Faralá is the Sacromonte register at half the price.</p>
+        <div class="links"><a href="https://www.moreriagastro.com/reserva/">moreriagastro.com</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Malacatín</p>
+          <span class="status opt">Optional · Mon or Tue LUNCH</span>
+        </div>
+        <p class="addr">C/ de la Ruda 5, La Latina · <strong>5 min walk</strong> · reservas@malacatin.com</p>
+        <div class="conf">
+          <div><div class="k">Open</div><div class="v">Sun–Tue 11:00–18:00 · <strong>lunch only</strong></div></div>
+          <div><div class="k">Price</div><div class="v">~€25–33</div></div>
+        </div>
+        <p class="blurb">The castizo <strong>cocido madrileño</strong> — four generations since 1895, unreconstructed, and the cocido is the <em>only</em> main. The most on-brief room in Madrid, but it books weeks ahead and it has to be a lunch, so treat it as a long shot. <strong>Taberna de la Daniela</strong> (below) is the fallback and needs almost no notice.</p>
+      </div>
+    </div>
+
+    <h3>Also worth noting</h3>
+
+    <div class="card">
+      <div class="body">
+        <p class="blurb"><strong>The field, honestly.</strong> Madrid has 31 stars. Dinner availability across your three nights: <strong>Sunday 4 · Monday 5–6 · Tuesday 20</strong>. Thin at the front of the week, wide open on Tuesday.</p>
+        <ul class="plain">
+          <li><strong>If Tuesday should be bigger than a one-star</strong> — <strong>Cebo</strong> ★ €160 (16 min walk, the only other walkable one) · <strong>Santerra</strong> ★ ~€90 · <strong>Smoked Room</strong> ★★ €180 Hachi (14 seats) · <strong>DSTAgE</strong> ★★ €195. <span class="w">The two-stars release 120 days out, so they are a cancellation play — ask for the 20:00 seating, which materially improves the odds.</span></li>
+          <li><strong>Other Monday options</strong> — Éter ~€130 (five tables, off most radars) · Clos Madrid ~€95–110 (wine-led) · Saddle ~€190 (classic, formal).</li>
+          <li><strong>Other Sunday options</strong> — Clos Madrid · Gofio ★ (Canarian, closed Mon &amp; Tue) · RavioXO ★ ~€70–90.</li>
+          <li><strong>DiverXO is closed Sun–Tue</strong>, so it was never on the table. <strong>StreetXO</strong> (Serrano 47, 3rd floor) is open daily, ~€50–90 pp — <strong>the counter is walk-in, no reservations</strong>; arrive 15–20 min before doors. RavioXO is the better middle path, since you can actually book it.</li>
+          <li><strong>Michelin at lunch</strong> is the workaround for the dead nights: Yugo the Bünker and Quimbaya both do <em>Sunday lunch only</em>; La Tasquería, Clos Madrid, Saddle and Éter all serve Monday lunch.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <p class="blurb"><strong>Cocido madrileño</strong> — broth, then chickpeas and vegetables, then the meats. Traditionally a long Thursday lunch. Not a walk-in dish.</p>
+        <ul class="plain">
+          <li><strong>Taberna de la Daniela Cuchilleros</strong> — C/ Cuchilleros 9, <strong>2 min</strong>. €31–45. <strong>Daily, and the only one of the four that serves cocido at dinner</strong> (13–17h &amp; 20–24h). +34 913 662 018. <span class="w">The practical answer.</span></li>
+          <li><strong>La Bola</strong> — C/ de la Bola 5, 16 min. €39.90–47. Individual clay pots over oak charcoal since 1870. Sun–Wed 13:00–16:00 only.</li>
+          <li><strong>Lhardy</strong> — Carrera de San Jerónimo 8, 15 min. €50–60+. Madrid's first luxury restaurant, 1839, formal 19th-century room. Sunday 13:00–16:00 only.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <p class="blurb"><strong>Sunday Sep 27 — El Rastro, and the vermut.</strong> The flea market runs Sundays <strong>09:00–15:00</strong> on C/ Ribera de Curtidores, five minutes from the hotel. You reach the room around 13:00, so you catch the last ninety minutes — peak crowd, stalls packing down. Treat it as an atmospheric walk-through, not a browsing session. <strong class="warn">⚠ It is Madrid's worst spot for pickpockets</strong> — front pockets, bags closed and in front. The vermouth hour afterwards is the real ritual, and it happens on your own street.</p>
+      </div>
+    </div>
+
+    <h3>Tapas, wine bars &amp; casual — no booking needed</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Bodegas Ricla</strong> — C/ Cuchilleros 6, <strong>3 min</strong>. Founded <strong>1867</strong>, standing room only, vermouth drawn from the barrel, tripe and León cured meats. <strong>Sunday 13:30–18:00</strong>, under €15. <span class="w">The arrival-day play. Order gildas or boquerones with it — the salt is the point.</span></li>
+          <li><strong>Taberna La Concha</strong> — Cava Baja 7, <em>on your block</em>. The more polished vermouth room; signature "Cocktail Manuela".</li>
+          <li><strong>Taberna Tempranillo</strong> — Cava Baja 38. The street's wine bar, 180+ Spanish wines by the glass. Go early, it fills.</li>
+          <li><strong>Casa Lucas</strong> — Cava Baja 30. Small, wine-led, lesser-known producers, slow runny tortilla.</li>
+          <li><strong>Casa Lucio</strong> — Cava Baja 35. The institution: <em>huevos rotos</em>. <span class="w">Reserve 1–2 weeks ahead for dinner</span> — or use <strong>Los Huevos de Lucio</strong> at No. 30, the walk-in sibling with the same eggs.</li>
+          <li><strong>Taberna Txakolina</strong> — Cava Baja 26. Basque pintxos, salt cod.</li>
+          <li><strong>La Perejila</strong> — Cava Baja 25. Chorizo in white wine, vintage and flower-filled, zero pretense.</li>
+          <li><strong>La Venencia</strong> — C/ Echegaray 7, Huertas. <strong>Sherry only, cash only, no photographs</strong>, your tab chalked on the bar. Unchanged since the 1930s. The best single room in Madrid.</li>
+          <li><strong>Angelita Madrid</strong> — C/ Reina 4. ~500 bottles, ~70 by the glass, cocktail cellar downstairs. Reserve for the restaurant, walk in for the bar.</li>
+          <li><strong>La Barra de la Tasquería</strong> — Estévez's original site reopened as a standing bar; <strong>2026 Bib Gourmand</strong>. Same DNA, no menu commitment.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BARCELONA ===================== -->
+  <section class="city" id="barcelona">
+    <div class="cityhead"><h2>Barcelona</h2><span class="when">Sep 30 → Oct 3 · 3 nights</span></div>
+    <p class="hood">Eixample — Ohla Eixample, Còrsega 289. The easy nights of the week: Wed, Thu and Fri are when everything is open.</p>
+
+    <h3>Reserve these</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Mont Bar <span class="stars">★★</span></p>
+          <span class="status">Fri Oct 2 · book today</span>
+        </div>
+        <p class="addr">C/ Diputació 220, Eixample · ~15 min walk from the hotel</p>
+        <div class="conf">
+          <div><div class="k">Closed</div><div class="v">Sunday</div></div>
+          <div><div class="k">Menus</div><div class="v">Classic €190 (19 courses) · Mont €240 (24)</div></div>
+          <div class="full"><div class="k">Watch</div><div class="v warn">⚠ 72-hour cancellation policy — full charge inside that window</div></div>
+        </div>
+        <p class="blurb">Opened as a neighbourhood bar and never entirely stopped being one — there is still counter and bar seating, and it holds two stars. <strong>The least formal high-end room on the whole itinerary</strong>, which is exactly the register you want.</p>
+        <p class="blurb"><strong>Why Friday:</strong> Oct 1 already carries the Sagrada Família anchor and the rooftop golden-window plan. Oct 2 is your open food-and-walking day. Wed Sep 30 and Thu Oct 1 both work too if you'd rather move it.</p>
+        <div class="links"><a href="https://montbar.com">montbar.com</a></div>
+      </div>
+    </div>
+
+    <h3>Also worth noting</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Xerta — downstairs in your own hotel.</strong> Ebro Delta cooking, ~90% of ingredients from the delta. <strong>Delta menu €80</strong> (7 courses) · Product €115 (9) · seasonal lunch €55 including two glasses. Tue–Sat, <strong>closed Sun &amp; Mon</strong>. <span class="w">⚠ It lost its Michelin star — held one 2016–2024, now "Michelin Selected". Two sources agree; not confirmed at Michelin directly.</span> A very good, very low-effort <strong>Wed Sep 30 arrival dinner</strong> after the train — but it should not take one of your event nights. The hotel also has <strong>Kintsugi</strong> (Japanese, Thu–Mon) and the rooftop.</li>
+          <li><strong>Disfrutar</strong> books <strong>up to 12 months ahead</strong> (€315 + €170 pairing). Not happening at eleven days — but <strong>Compartir Barcelona</strong>, from the same three chefs, is the realistic way into that lineage.</li>
+          <li><strong>Other one-stars open your nights</strong> — <strong>Dos Palillos</strong> €140/€175, Asian tapas at a standing counter in Casa Camper, serious sake list (closed Sun &amp; Mon) · <strong>Koy Shunka</strong> €178/€218, Japanese <em>kappo</em> counter around a wood-fired kitchen (closed Sun &amp; Mon) · <strong>COME by Paco Méndez</strong> €185, Mexican-Mediterranean with elBulli technique (closed Sat &amp; Sun) · <strong>Alkimia</strong> €188, contemporary Catalan in the Moritz brewery, 18 seats — <span class="w">but Friday is lunch only, so Wed or Thu only.</span></li>
+          <li><strong>The easier three-stars</strong>, per local guides — ABaC €225–295 ("reservations are easy to get"), Cocina Hermanos Torres €310 (~2 weeks), Lasarte €345 dinner (~2 weeks). All over budget, all more formal than Mont Bar.</li>
+          <li><strong>Bib Gourmands</strong> — <strong>Cruix</strong> (Eixample, 7 courses ~€45, bookable about a week out) is the gettable one. <strong>Berbena</strong> (Gràcia) is the critics' darling but books many weeks ahead and closes weekends — likely too late.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Tapas, wine bars &amp; casual — no booking needed</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Bar Mut</strong> — Pau Claris 192, <strong>5 min walk</strong>. The Eixample wine bar: marble counter, excellent list, foie, market seafood. Gets tight.</li>
+          <li><strong>Entrepanes Díaz</strong> — Eixample. The great Barcelona sandwich bar — calamari baguette, suckling pig — white-jacketed waiters, very fast.</li>
+          <li><strong>Paco Meralgo</strong> — Muntaner 171. Seafood-forward classic tapas counter, the locals' standby.</li>
+          <li><strong>Quimet &amp; Quimet</strong> — Poble Sec. Standing-room-only <em>montaditos</em> built from tinned seafood, since 1914. <strong>No reservations — arrive at opening.</strong></li>
+          <li><strong>El Xampanyet</strong> — El Born. House cava and anchovies since 1929, tiled and chaotic. Go early.</li>
+          <li><strong>Bar Cañete</strong> — Raval. Refined Catalan cooking at a long counter; the best high-end/low-formality combination in the old city. Walk-ins wait ~30 min, or book.</li>
+          <li><strong>Bar La Plata</strong> — Gòtic. Four dishes, three wines, under €10, since 1945. Lunch and early evening only.</li>
+          <li><strong>Bodega Quimet</strong> — Gràcia. Vermouth bodega since the 1950s, barrels and <em>conservas</em>.</li>
+          <li><strong>La Cova Fumada</strong> — Barceloneta. Birthplace of the <em>bomba</em>, no sign on the door, <strong>closes ~15:00</strong>, no reservations.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GRANADA ===================== -->
+  <section class="city" id="granada">
+    <div class="cityhead"><h2>Granada</h2><span class="when">Oct 3 → 6 · 3 nights</span></div>
+    <p class="hood">Casa 1800, at the foot of the Albaicín by Plaza Nueva. One of the last Spanish cities where a free tapa arrives with every drink — and it improves with each round.</p>
+
+    <h3>Reserve these</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Faralá <span class="stars">★</span></p>
+          <span class="status">Sat Oct 3 · 19:00 · book this week</span>
+        </div>
+        <p class="addr">Cuesta de Gomérez 11 · <strong>2 min walk from Casa 1800</strong> · +34 664 085 313</p>
+        <div class="conf">
+          <div><div class="k">Menus</div><div class="v">€78 Susurros · €98 Albayzín · €130 Alborán</div></div>
+          <div><div class="k">With flamenco</div><div class="v">€123 Albayzín · €155 Alborán</div></div>
+          <div class="full"><div class="k">Show</div><div class="v">Dinner service only, <strong>starts 19:00</strong></div></div>
+        </div>
+        <p class="blurb"><strong>Granada's only Michelin star</strong>, on the road that climbs from Plaza Nueva to the Alhambra. Downstairs is a flamenco tablao, and the show is a dinner add-on rather than a separate evening. Andalusian cooking reinterpreted — deconstructed tortilla del Sacromonte, Nazarí-era references, falafel.</p>
+        <p class="blurb"><strong>Why Saturday:</strong> you land from Barcelona at ~14:30 with nothing else scheduled, and it sets the Andalusian tone the night before Alhambra day. <strong>Oct 4 is ruled out</strong> — sunset at Mirador de San Nicolás collides with a 19:00 curtain.</p>
+        <p class="blurb"><strong class="warn">⚠ No vegetarian menu</strong>, and menus cannot be changed after arrival — allergies must be declared at booking. <span class="warn">⚠ Closing day unverified</span>: the site shows service 13:30–23:00 daily but no source confirms a day off. Saturday is near-certain.</p>
+        <p class="blurb">Guía Repsol lists different prices (€68 / €84 / €104, and a third menu called <em>Esencia Nazarí</em>) — prices have moved, so confirm at booking. The ground floor is <strong>El Quejío Wine Bar</strong>, à la carte, if you'd rather drink than commit.</p>
+        <div class="links"><a href="https://restaurantefarala.com/en/">restaurantefarala.com</a><span class="sep">·</span><a href="https://www.thefork.es/restaurante/farala-r416379">TheFork</a></div>
+      </div>
+    </div>
+
+    <h3>Also worth noting</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Atelier – Casa de Comidas</strong> — 2026 Bib Gourmand, ~15 min from the centre. <strong>Closed Sun &amp; Mon</strong>, which leaves only Sat Oct 3 — and that is Faralá night. Probably skip it this trip.</li>
+          <li><strong>Mon Oct 5 is the Guadix day</strong> — wineries and lunch out there are in the <a href="#road">On the road</a> section. Back for a slow Albaicín evening.</li>
+          <li><strong>Granada is a tapas town, not a cocktail town.</strong> Set expectations accordingly — the free-tapa ritual is the thing here.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Tapas, wine bars &amp; casual — no booking needed</h3>
+
+    <div class="card">
+      <div class="body">
+        <p class="blurb">Densest zones: <strong>Calle Navas</strong>, <strong>Calle Elvira / Almireceros</strong> (two minutes away), <strong>Realejo</strong>, and <strong>Campo del Príncipe</strong>.</p>
+        <ul class="plain">
+          <li><strong>Bodegas Castañeda</strong> — C/ Almireceros 1–3, <strong>3 min</strong>. The Granada institution, 1927: wine and house vermouth drawn from wall-mounted barrels, the <em>calicasas</em> barrel blend, jamón carved at the counter. Standing-room scrum, no reservations. <span class="w">You come for the room, not for clever tapas.</span></li>
+          <li><strong>Los Diamantes</strong> — Plaza Nueva 13, <em>right by the hotel</em>. <em>Pescaíto frito</em> since 1942 — the free tapa is a paper cone of fried fish. Loud, tiled, standing.</li>
+          <li><strong>Taberna La Tana</strong> — Placeta del Agua 3, Realejo, ~8 min. The serious wine bar: 600+ references, strong on Andalusian small producers. <strong>Fills within 20 minutes of opening — arrive at 20:00 sharp.</strong> <span class="w">⚠ Day off unverified; 958 22 52 48.</span></li>
+          <li><strong>Bar Aliatar</strong> — Plaza Aliatar 4, upper Albaicín. A real neighbourhood bar, not a tourist stop: <em>caracoles</em> in spiced broth, chorizo al fuego, <em>choto</em>. <strong class="warn">Closed Mondays</strong> — rules it out on Oct 5.</li>
+          <li><strong>Casa de Vinos La Brujidera</strong> — C/ Monjas del Carmen 2, Realejo. Tiny cave-like room walled in bottles; the calm alternative when Castañeda is impossible.</li>
+          <li><strong>Bar Poë</strong> — C/ Verónica de la Magdalena 40. Rotating creative free tapas with Portuguese, Angolan and Brazilian leanings. Cash only, evenings.</li>
+          <li><strong>Cocktails</strong> — <strong>Hanalei</strong> (C/ Piedra Santa 22), a properly executed tiki bar with house syrups; or <strong>Lemon Rock</strong> (C/ Montalbán 6), a restored 17th-century mansion with live music and a roof terrace.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RONDA ===================== -->
+  <section class="city" id="ronda">
+    <div class="cityhead"><h2>Ronda</h2><span class="when">Oct 6 → 8 · 2 nights</span></div>
+    <p class="hood">Catalonia Ronda, town centre by the bullring, ~2 min to the Puente Nuevo. Everything here is walkable.</p>
+
+    <h3>Reserve these</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Bardal <span class="stars">★★</span></p>
+          <span class="status">Tue Oct 6 · book today</span>
+        </div>
+        <p class="addr">C/ José Aparicio 1 · <strong>5 min walk</strong> · +34 951 48 98 28 · parking at Plaza del Socorro</p>
+        <div class="conf">
+          <div><div class="k">Closed</div><div class="v">Sunday &amp; Monday</div></div>
+          <div><div class="k">Hours</div><div class="v">Tue–Sat 12:00–16:30, 20:00–23:30</div></div>
+          <div><div class="k">Menus</div><div class="v">Menú Bardal <strong>€195</strong></div></div>
+          <div><div class="k">Over budget</div><div class="v">Gran Menú Bardal €230</div></div>
+        </div>
+        <p class="blurb">Benito Gómez cooks without a fixed concept — the menu is reinterpreted daily — and the room is famously relaxed for two stars. Smoked eel in puff pastry, braised fish with seaweed gazpacho, goat with goat butter.</p>
+        <p class="blurb"><strong>Why Tuesday:</strong> Oct 7 is the Zahara / Puerto de las Palomas day and ends with an hour's drive back over the pass — you will want Tragatá or a wine bar, not a three-hour tasting menu. Oct 6 you arrive mid-afternoon from Antequera with the evening free. <span class="w">Swap if you prefer — both nights are open. Note Almocábar is closed Tuesdays, which slightly weakens the Oct 6 casual alternative.</span></p>
+        <div class="links"><a href="https://www.restaurantebardal.com/bardal">restaurantebardal.com</a><span class="sep">·</span><a href="https://www.thefork.com/restaurant/bardal-de-benito-gomez-r755307">TheFork</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Tragatá</p>
+          <span class="status">Wed Oct 7 · book this week</span>
+        </div>
+        <p class="addr">C/ Nueva 4 · <strong>1 min from the Puente Nuevo</strong> · +34 952 87 72 09</p>
+        <div class="conf">
+          <div><div class="k">Hours</div><div class="v">13:00–15:45 &amp; 20:00–22:45</div></div>
+          <div><div class="k">Price</div><div class="v">~€40–60 pp à la carte with wine</div></div>
+          <div class="full"><div class="k">Booking</div><div class="v">Online up to 6 · phone answers <strong>only</strong> 12:00–13:15 and 19:30–20:15</div></div>
+        </div>
+        <p class="blurb"><strong>Benito Gómez's casual room</strong> — the two-star kitchen's DNA at a fraction of the price. <em>Ensaladilla</em>, <em>callos</em>, bocadillo de calamares, oysters and raw fish, technically sharp small plates. <strong>Booking is essential</strong>: fixed sittings with a ten-minute grace period only. <span class="w">⚠ Michelin-Guide listed; whether it currently holds a Bib Gourmand I could not confirm.</span></p>
+        <div class="links"><a href="https://www.tragata.com/ronda">tragata.com</a></div>
+      </div>
+    </div>
+
+    <h3>Also worth noting</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Ronda genuinely lacks a standout cocktail bar.</strong> The honest options are Entrevinos for wine instead, or a gin-tonic on the <strong>Parador terrace</strong> over the Tajo at sunset — scenery, not mixology. Long Play, near the bullring, is a late-night rock bar.</li>
+          <li><strong>Wed Oct 7 is the white-villages day</strong> — the Serranía de Ronda wineries are in the <a href="#road">On the road</a> section.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Tapas, wine bars &amp; casual — no booking needed</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Entrevinos</strong> — C/ Pozo 2. The town's proper wine bar, list weighted to southern Spain and the Serranía de Ronda, tapas to match. Small, standing room. <strong class="warn">Closed Sundays.</strong> Tue–Sat 12:30–16:30, 20:00–00:30. Arrive at opening.</li>
+          <li><strong>Almocábar</strong> — Plaza Ruedo Alameda 5, El Barrio (the atmospheric end of town, by the Almocábar gate). Family-run, seasonal Andalusian: rabo de toro, grilled fish, croquetas, good Sierras de Málaga list, terrace on the plaza. <strong class="warn">Closed Tuesdays.</strong> <span class="w">Very few tables — reserve.</span></li>
+          <li><strong>Bodega San Francisco</strong> — Plaza Ruedo Alameda 27. Sprawling three-room tavern, the local default. <em>Tortitas de camarones</em>, honest raciones. <span class="w">⚠ Reported closed Thursdays.</span></li>
+          <li><strong>El Lechuguita</strong> — C/ Virgen de los Remedios 35. Tick your order on a paper list, tapas ~€1, packed with <em>rondeños</em> from 21:00. Zero tourism polish.</li>
+          <li><strong>De Locos Tapas</strong> — C/ Nueva 93. Six tables, inventive, wine-driven, chef-owner front of house. Good second option if Tragatá is full.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CÓRDOBA ===================== -->
+  <section class="city" id="cordoba">
+    <div class="cityhead"><h2>Córdoba</h2><span class="when">Oct 8 → 10 · 2 nights</span></div>
+    <p class="hood">Las Casas de la Judería, ~2 min from the Mezquita. Note the local rhythm: many tabernas serve <strong>dinner only Mon–Fri and lunch only Sat–Sun</strong>.</p>
+
+    <h3>Reserve these</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Noor <span class="stars">★★★</span></p>
+          <span class="status">Fri Oct 9 · BOOK FIRST, TODAY</span>
+        </div>
+        <p class="addr">C/ Pablo Ruiz Picasso 8 · <strong>~3–4 km east — taxi, ~10 min</strong> · +34 957 964 055</p>
+        <div class="conf">
+          <div><div class="k">Closed</div><div class="v">Sun, Mon &amp; Tue — <strong>Wed–Sat only</strong></div></div>
+          <div><div class="k">Menus</div><div class="v">Tahdir €95 · <strong>Rihla €130</strong> · Wusul €190</div></div>
+          <div><div class="k">Pairings</div><div class="v">€45 / €65 / €90</div></div>
+          <div><div class="k">Cancellation</div><div class="v warn">Card guarantee · €120 pp inside 48 h</div></div>
+        </div>
+        <p class="blurb"><strong>The single best fit on the whole route.</strong> Paco Morales reconstructs the cuisine of Al-Andalus from period sources, each season built around a different century — no tomato, no potato, no chocolate, because none had arrived yet. You spend Oct 9 inside the Mezquita watching Roman columns hold up Moorish arches under a Christian nave, and then eat the same layering.</p>
+        <p class="blurb">A three-star at eleven days is the tightest ask on this list. <strong>Book this one before anything else.</strong></p>
+        <div class="links"><a href="https://noorrestaurant.es/en/">noorrestaurant.es</a><span class="sep">·</span><a href="mailto:reservas@noorrestaurant.es">reservas@noorrestaurant.es</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Regadera</p>
+          <span class="status">Thu Oct 8 · book this week</span>
+        </div>
+        <p class="addr">Ronda de Isasa 10, riverfront by the Roman Bridge · <strong>5 min walk</strong></p>
+        <div class="conf">
+          <div><div class="k">Open</div><div class="v">Daily 13:00–16:00, 20:00–23:00</div></div>
+          <div><div class="k">Guide</div><div class="v">2026 Bib Gourmand</div></div>
+        </div>
+        <p class="blurb">The best casual dinner in the city and the best fit for your style — five minutes from the hotel, open daily, and it takes the pressure off the night before Noor.</p>
+        <div class="links"><a href="https://www.regadera.es/en/">regadera.es</a></div>
+      </div>
+    </div>
+
+    <h3>Also worth noting</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>El Bar de Paco Morales</strong> — C/ Pablo Ruiz Picasso 6, next door to Noor. Morales' informal bar-format project, same company. <span class="w">⚠ 2026 hours and closing days are not published anywhere — call +34 957 101 319 before crossing town, and remember it is a taxi, not a walk.</span></li>
+          <li><strong>Córdoba's other stars</strong> — Choco ★ and ReComiendo ★, if Noor cannot be got.</li>
+          <li><strong>Other 2026 Bib Gourmands</strong> — La Taberna de Almodóvar, Terra Olea, El Envero, La Cuchara de San Lorenzo. Also <strong>Garum 2.1</strong> (C/ San Fernando 122), a bistronomic tapas bar reported open daily.</li>
+          <li><strong>No cocktail bar worth crossing town for.</strong> The honest recommendation is to drink Montilla-Moriles instead — El Número 10 or Bodega Guzmán below, or an after-dinner drink at the Bodegas Campos bar.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Tapas, wine bars &amp; casual — no booking needed</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Bodega Guzmán</strong> — C/ Judíos 7, deep in the Judería, minutes from the hotel. The most atmospheric barrel room in the city: Montilla-Moriles fino and amontillado drawn from the cask into thick tumblers, bullfighting shrine on the wall, almost no concession to visitors. <span class="w">Mon–Fri 20:30–23:30; Sat–Sun also 12:00–16:00.</span></li>
+          <li><strong>Taberna Salinas</strong> — C/ Tundidores 3. Open since <strong>1879</strong>, patio-centred. The benchmark <em>salmorejo</em>, <em>naranjas picadas con bacalao</em>, rabo de toro, flamenquín. <span class="w">Mon–Fri dinner only; Sat–Sun lunch only. Recommended to reserve.</span></li>
+          <li><strong>Taberna San Miguel "Casa El Pisto"</strong> — Plaza San Miguel 1. An 1880 institution beside the church: <em>pisto</em>, salmorejo, rabo, Montilla by the glass.</li>
+          <li><strong>Bodegas Campos</strong> — C/ Lineros 32. A warren of patios and rooms in a 1908 complex, walls signed by decades of visitors. Grander than a taberna but not stiff. <strong>Reservation required.</strong></li>
+          <li><strong>Taberna El Número 10</strong> — C/ Romero 10, Judería. Cellar exclusively DO Montilla-Moriles, with tastings — the place to learn the fino/amontillado spectrum. <strong class="warn">Closed Mondays.</strong></li>
+          <li><strong>Bar Santos</strong> — C/ Magistral González Francés 3, literally against the Mezquita wall. The famous towering <em>tortilla española</em> by the wedge on a paper plate, eaten on the steps facing the mosque. Cash only. <span class="w">A ritual, not a meal.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SEVILLE ===================== -->
+  <section class="city" id="seville">
+    <div class="cityhead"><h2>Seville</h2><span class="when">Oct 10 → 12 · 2 nights</span></div>
+    <p class="hood">Hotel Gravina 51, Arenal–Museo — the best tapas corner in the city. <strong>The calendar splits cleanly: Sat Oct 10 is the tapas night, Sun Oct 11 is the restaurant night.</strong></p>
+
+    <h3>Reserve these</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Abantal <span class="stars">★</span></p>
+          <span class="status">Sun Oct 11 · book this week</span>
+        </div>
+        <p class="addr">C/ Alcalde José de la Bandera 7 y 9 · ~20 min walk · +34 954 540 000</p>
+        <div class="conf">
+          <div><div class="k">Closed</div><div class="v">Monday — open Tue–Sun</div></div>
+          <div><div class="k">Booking</div><div class="v warn">TheFork only — they refuse phone reservations</div></div>
+        </div>
+        <p class="blurb">Julio Fernández's contemporary Andalusian, and <strong>the only starred night actually available to you in Seville</strong>: Cañabota ★ (seafood) closes Sundays, which would force it to Sat Oct 10 — when you don't reach the city until ~19:30 after the drive and the car drop.</p>
+        <p class="blurb"><strong>Why Sunday works:</strong> the Alcázar releases you at 17:45, and most of Seville's classic tapas rooms are shut that night anyway.</p>
+        <div class="links"><a href="https://abantalrestaurante.es/en/reservations/">abantalrestaurante.es</a></div>
+      </div>
+    </div>
+
+    <h3>Also worth noting</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Sat Oct 10 needs no booking at all</strong> — which is lucky, because your arrival time is uncertain. Casa Morales and Bodeguita Romero are both minutes from Gravina 51 and both walk-in. See below.</li>
+          <li><strong>Mon Oct 12 is lunch, not dinner</strong> — you're on the 19:32 AVE, and it's <strong>Fiesta Nacional de España</strong>, a national holiday. <strong>Balbuena y Huertas</strong> (2026 Bib Gourmand, €30–40) is <strong>open daily, lunch and dinner</strong> — the safe answer when much of the old town is shut.</li>
+          <li><strong>Other 2026 Bib Gourmands</strong> — <strong>Az-Zaít</strong> (€40–50, lunch Wed–Mon, dinner daily) and <strong>Lalola de Javi Abascal</strong> (€40–50, <span class="warn">closed Sun &amp; Mon</span>).</li>
+          <li><strong>Cocktails</strong> — <strong>Maldito Cocktail Bar</strong> (C/ Boteros 21) is the serious craft room, small and bartender-led. <strong>Bar Americano</strong> at the Hotel Alfonso XIII is the other end: a handsome 1929 room with a patio that serves outside normal Spanish hours — useful after a late crawl. Both a short walk from the hotel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Tapas, wine bars &amp; casual — no booking needed</h3>
+
+    <div class="card">
+      <div class="body">
+        <ul class="plain">
+          <li><strong>Casa Morales</strong> — C/ García de Vinuesa 11, <strong>5 min</strong>. Founded <strong>1850</strong>, still the same family, fourth generation. Front bar plus a back room of giant clay <em>tinajas</em>. Cold pressed pork belly, <em>chicharrones</em>, tortilla, salmorejo, house manzanilla. <strong>The single most atmospheric room in Seville.</strong> <span class="warn">Closed Sundays.</span></li>
+          <li><strong>Bodeguita Romero</strong> — C/ Harinas 10, <strong>3 min</strong>. The definitive <em>montadito de pringá</em>, plus <em>papas aliñás</em> and spinach with chickpeas. Tiny, fiercely local. <strong class="warn">Closed Sun &amp; Mon → Sat Oct 10 only.</strong></li>
+          <li><strong>El Rinconcillo</strong> — C/ Gerona 40, ~12 min. Seville's oldest bar, <strong>1670</strong>. <em>Espinacas con garbanzos</em>, jamón, croquetas, bills chalked on the wooden bar. <span class="w">Tapas are served only at the downstairs bar — stand if you want them. ⚠ Three sources give three different closing days; none affects Sat–Mon.</span></li>
+          <li><strong>Vinería San Telmo</strong> — Paseo Catalina de Ribera 4. The wine bar to book: long by-the-glass list including serious sherry, and genuinely creative tapas rather than museum pieces.</li>
+          <li><strong>Espacio Eslava</strong> — C/ Eslava 3, San Lorenzo. The best modern tapas cooking in the city and still a bar. <em>Cigarro para Bécquer</em>, slow egg on mushroom cake with honeyed wine, honey-glazed ribs. <span class="warn">⚠ Traditionally closed Sunday evening and Monday — verify, it affects both Oct 11 and 12.</span></li>
+          <li><strong>Taberna Álvaro Peregil</strong> — C/ Mateos Gago 22. A two-metre-wide standing bar pouring sweet <em>vino de naranja</em> since 1904. One drink, one montadito, ten minutes, move on.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ON THE ROAD ===================== -->
+  <section class="city" id="road">
+    <div class="cityhead"><h2>On the road</h2><span class="when">Drives between cities &amp; day trips</span></div>
+    <p class="hood">Wineries, long lunches and stops on the days you have the car — Oct 5 through Oct 10. These are the days your notes describe as the point of renting: scenic road, one castle, one winery, one village, an unexpected lunch.</p>
+
+    <h3>Mon Oct 5 — Guadix day trip, from Granada</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Bodegas Muñana</p>
+          <span class="status">Call this week</span>
+        </div>
+        <p class="addr">Carretera de la Peza s/n, Cortes y Graena · ~45–60 min from Granada · +34 958 67 07 15 (weekdays 09:00–15:00) or +34 666 55 94 09</p>
+        <div class="conf">
+          <div><div class="k">Open</div><div class="v">Mon–Sun year-round — <strong>Oct 5 works</strong></div></div>
+          <div><div class="k">Price</div><div class="v">From ~€14–15 pp · ~90 min</div></div>
+        </div>
+        <p class="blurb">Guided vineyard walk, cellar tour and a tasting of two or three wines, with the vines set against the Sierra Nevada. <strong class="warn">⚠ The standard guided visit has a six-person minimum</strong> — for two of you, book the <em>Visita Privada / Cata Exclusiva</em> or ask to join an existing group. No restaurant on site; pair with lunch in Guadix afterwards.</p>
+        <div class="links"><a href="https://bodegasmunana.com/enoturismo/">bodegasmunana.com</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Bodega Pago de Almaraes</p>
+          <span class="status opt">Alternative · verify Monday first</span>
+        </div>
+        <p class="addr">Carretera de Fonelas 1, Benalúa (Guadix) · +34 958 34 87 52 · comercial@bodegaspagodealmaraes.es</p>
+        <p class="blurb">Cave-excavated barrel room, vines at 900–1,600 m. The tour ends with <strong>three wines paired with local cheeses and cured meats</strong> — a tasting plate rather than lunch. They also run cheese- and bread-making workshops, and can arrange tastings at Casa Restaurante Pilar del Toro back in Granada, so a lunch can be built around it.</p>
+        <p class="blurb"><strong class="warn">⚠ This is the main open question for Oct 5.</strong> Weekday schedule, Monday availability and per-person price are all unverified, and several DOP Granada bodegas take Mondays off. <strong>Call early in the week.</strong></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <p class="blurb"><strong>Also that day</strong> — Guadix itself for lunch after the winery: the cave quarter (Barrio de las Cuevas), the miradores and the cathedral. La Calahorra Castle is exterior-viewpoint only, since the interior opens Fri–Sun and Oct 5 is a Monday.</p>
+      </div>
+    </div>
+
+    <h3>Tue Oct 6 — Granada → Ronda, via Antequera &amp; El Torcal</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Arte de Cozina</p>
+          <span class="status">Antequera lunch · reserve</span>
+        </div>
+        <p class="addr">C/ Calzada 27, Antequera · +34 952 84 00 14</p>
+        <div class="conf">
+          <div><div class="k">Open</div><div class="v">Lunch 13:00–16:30 <strong>daily, including Tuesday</strong></div></div>
+          <div><div class="k">Price</div><div class="v">~€30–40 pp</div></div>
+        </div>
+        <p class="blurb">Exactly your register. Chef Charo Carmona has spent two decades recovering Antequera's own peasant and convent recipes: <strong>porra antequerana</strong> (and a version with orange), <strong>gazpachuelo</strong> with shoestring potatoes, goat stew from an old recipe, spinach-and-chickpea stew with a fried egg, <em>bienmesabe</em> for dessert. Notable vermouth and local-wine list, a dining room and a tapas bar both. <span class="w">The only place in Antequera I could verify as reliably open on a Tuesday — Recuerdos Tapas Bodega is Thu–Sun only, so it is shut for you.</span> Reservations recommended, essential for the tasting menu.</p>
+      </div>
+    </div>
+
+    <h3>Wed Oct 7 — White villages: Zahara de la Sierra &amp; Puerto de las Palomas</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">La Melonera</p>
+          <span class="status">10:30 · book this week</span>
+        </div>
+        <p class="addr">Paraje Los Frontones, Camino Ronda–Setenil · 10–15 min from town, on the <em>northern</em> side toward Setenil and Zahara</p>
+        <div class="conf">
+          <div><div class="k">Visita Clásica</div><div class="v"><strong>€35 pp · 90 min</strong></div></div>
+          <div><div class="k">Sessions</div><div class="v">10:30 and 16:00, <strong>Mon–Sun</strong>, ES &amp; EN</div></div>
+        </div>
+        <p class="blurb">The best-organised of the Serranía de Ronda options and the only one with confirmed online booking and published hours. Vineyard, organic garden and olive grove walk, then the cellar, then <strong>three wines tasted with Iberian ham, house-baked spelt bread and olive oil</strong> — a light meal, not just a sip.</p>
+        <p class="blurb"><strong>Take the 10:30</strong> and the whole afternoon stays free for the Puerto de las Palomas pass and a long lunch in Zahara. Also offered: a €20 wine-bar tasting with no reservation needed, a €65 "Sunset Experience" with a vineyard picnic, and a bullfighting-art collection visit at €50.</p>
+        <div class="links"><a href="https://lamelonera.com/enoturismo-ronda/">lamelonera.com</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <p class="blurb"><strong>The two alternatives, both requiring a phone call</strong> — neither publishes hours or prices, so verify Wednesday directly.</p>
+        <ul class="plain">
+          <li><strong>Bodega Descalzos Viejos</strong> — Partido de los Molinos s/n. <strong>The most beautiful of the three</strong>: a restored 16th-century Trinitarian convent in the gorge below the old town, surviving frescoes, vines on the terraces. Small groups only, by arrangement. WhatsApp <strong>+34 607 167 482</strong> (ask for Flavio Salesi) or +34 952 874 696.</li>
+          <li><strong>Bodega Joaquín Fernández</strong> — Paraje Los Frontones, ~3 km south of Ronda. Family-run organic producer; tour and tasting ~90 min from around €45, <strong>with food pairings and a restaurant on site</strong> with vineyard and Ronda views. <span class="w">The best "tour that turns into lunch" of the three — chase this one if you'd rather the winery <em>be</em> the meal. +34 951 16 60 43.</span></li>
+        </ul>
+        <p class="blurb"><strong>Geography note:</strong> Zahara and the Puerto de las Palomas are north-west of Ronda; all three wineries sit immediately around Ronda itself. The workable shape is winery in the morning, then drive the pass — or reverse it and take a late tasting.</p>
+      </div>
+    </div>
+
+    <h3>Sat Oct 10 — Córdoba → Seville, via Carmona</h3>
+
+    <div class="card">
+      <div class="body">
+        <div class="namerow">
+          <p class="name">Molino de la Romera</p>
+          <span class="status">Carmona lunch · reserve</span>
+        </div>
+        <p class="addr">C/ Sor Ángela de la Cruz 8, Carmona · +34 954 14 20 00</p>
+        <div class="conf">
+          <div><div class="k">Open</div><div class="v">Tue–Sat 13:00–16:00 — <strong>Oct 10 works</strong></div></div>
+          <div><div class="k">Closed</div><div class="v">Sunday &amp; Monday</div></div>
+        </div>
+        <p class="blurb">A 15th-century Mudéjar olive mill: vine-shaded central patio, thick stone rooms, and a terrace with <strong>the same view over the Corbones plain as the Parador, for considerably less money</strong>. Lamb chops, <em>pluma ibérica</em>, artisan anchovies, croquetas, house desserts.</p>
+        <p class="blurb"><strong>Recommended over the Parador.</strong> The Parador terrace is one of the great lunch views in Andalusia — a Moorish alcázar on the escarpment — but the food is Parador-standard rather than exciting. Same landscape here, far more character.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <p class="blurb"><strong>The other Carmona option</strong> — <strong>Casa Curro Montoya</strong>, C/ Santa María de Gracia 13 (+34 657 90 36 29). Small, owner-run, bullfighting décor, a tiny terrace in the historic centre. Artichokes, seafood, jamón, seasonal plates — the most personal cooking in town, priced above what the room suggests. <strong>Saturday 13:30–16:00</strong>, closed Tuesdays. No view.</p>
+        <p class="blurb">Carmona itself: the Roman necropolis, the Alcázar de la Puerta de Sevilla (Carthaginian → Roman → Moorish in one gate-fortress), and the Puerta de Córdoba at the far end of the old town. Then on toward <strong>Santa Justa to drop the car before entering Seville</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BOOKING ORDER ===================== -->
+  <section class="city" id="order">
+    <div class="cityhead"><h2>Booking order</h2><span class="when">from Sep 16 · ~11 days out</span></div>
+
+    <div class="card">
+      <div class="body">
+        <p class="blurb"><strong>Today</strong></p>
+        <ol class="order">
+          <li><strong>Noor</strong> — Córdoba, Fri Oct 9. Three stars, tightest window. CoverManager via noorrestaurant.es.</li>
+          <li><strong>Bardal</strong> — Ronda, Tue Oct 6. restaurantebardal.com or +34 951 48 98 28.</li>
+          <li><strong>Mont Bar</strong> — Barcelona, Fri Oct 2. montbar.com. <em>Note the 72-hour cancellation charge before you commit.</em></li>
+          <li><strong>Corral de la Morería</strong> — Madrid, Tue Sep 29. Eight seats a night, so it goes first. Call <strong>+34 913 658 446</strong> and settle the 2026 price <em>and</em> the with-show / without-show question on the same call.</li>
+          <li><strong>Sobrino de Botín</strong> — Madrid, Sun Sep 27. botin.es or +34 913 664 217. Ask for 13:00 or 21:00.</li>
+        </ol>
+        <p class="blurb"><strong>This week</strong></p>
+        <ol class="order" start="6">
+          <li><strong>La Tasquería</strong> — Madrid, Mon Sep 28. latasqueria.com or +34 914 511 000.</li>
+          <li><strong>Faralá</strong> — Granada, Sat Oct 3. TheFork. Specify the <strong>Flamenco Experience</strong>, 19:00.</li>
+          <li><strong>Abantal</strong> — Seville, Sun Oct 11. TheFork only; they refuse phone bookings.</li>
+          <li><strong>Tragatá</strong> — Ronda, Wed Oct 7. tragata.com.</li>
+          <li><strong>La Melonera</strong> — Oct 7, 10:30 session. lamelonera.com.</li>
+          <li><strong>Bodegas Muñana</strong> <em>or</em> <strong>Pago de Almaraes</strong> — Oct 5. Call both: ask Almaraes about Monday opening, Muñana about the private visit.</li>
+          <li><strong>Arte de Cozina</strong> — Antequera, Oct 6 lunch. +34 952 84 00 14.</li>
+          <li><strong>Molino de la Romera</strong> — Carmona, Oct 10 lunch. +34 954 14 20 00.</li>
+          <li><strong>Regadera</strong> — Córdoba, Thu Oct 8. regadera.es.</li>
+          <li><strong>Malacatín</strong> — Madrid, Mon or Tue <em>lunch</em>, only if you want the castizo cocido. reservas@malacatin.com — books weeks out, so a long shot.</li>
+        </ol>
+        <p class="blurb"><strong>No booking needed at all</strong> — Cava Baja, La Venencia, Bodegas Ricla, Quimet &amp; Quimet, Bodegas Castañeda, Los Diamantes, Bodega Guzmán, Bar Santos, Casa Morales, Bodeguita Romero. <em>These are the meals you will probably remember.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <h3>Unverified — check before relying on</h3>
+    <ul class="plain">
+      <li><strong>Corral de la Morería's 2026 menu price</strong> — genuinely unpublished; the €49/€65 figures in circulation predate the star. The show is a separate booking.</li>
+      <li><strong>Faralá's day off</strong> — the site shows daily service; no source confirms one.</li>
+      <li><strong>Pago de Almaraes</strong> — Monday opening, schedule and price.</li>
+      <li><strong>Descalzos Viejos and Joaquín Fernández</strong> — no published hours or prices; phone only.</li>
+      <li><strong>Espacio Eslava's</strong> Sunday-evening and Monday closure (affects Oct 11–12).</li>
+      <li><strong>Taberna La Tana's</strong> day off · <strong>El Rinconcillo's</strong> (three sources, three answers) · <strong>Bodega San Francisco's</strong> reported Thursday closure.</li>
+      <li><strong>El Bar de Paco Morales</strong> — exists and the address is current, but no 2026 hours published.</li>
+      <li><strong>Tragatá's</strong> exact Michelin distinction — Guide-listed; Bib status unconfirmed.</li>
+      <li><strong>Xerta's star loss</strong> — two independent sources agree, not confirmed at Michelin directly.</li>
+      <li><strong>Coque's Monday</strong> and <strong>RavioXO's Monday</strong> — sources conflict; neither is in the recommended plan.</li>
+      <li><strong>No live availability was checked</strong> for any date. Everything here is based on published lead times and closing days.</li>
+    </ul>
+    <p style="margin-top:12px">Full working notes, including the complete 31-restaurant Madrid star table, live in <strong>Spain_Trip_2026_Dining.md</strong>.</p>
+  </div>
+
+</div>
+</body>
+</html>
