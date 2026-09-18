@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spain Trip 2026 — Schedule by City</title>
+<style>
+  :root{
+    --ink:#2b2622; --muted:#6b625a; --line:#e4ddd3; --paper:#fffdf9;
+    --terra:#b5502e; --gold:#9a7b2e; --card:#ffffff; --green:#2f6b46;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#f3efe8;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 26px 60px;}
+  .nav{position:sticky;top:0;z-index:5;background:rgba(243,239,232,.94);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);margin:0 -26px 0;padding:11px 26px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .nav .brand{font-family:Georgia,serif;font-weight:700;color:var(--terra)}
+  .nav a{color:#5c5348;text-decoration:none;font-size:14px;font-weight:600}
+  .nav a.active{color:var(--terra)}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:30px;margin:18px 0 4px;letter-spacing:.2px}
+  h2{font-family:Georgia,serif;font-size:23px;margin:0;color:var(--terra)}
+  .sub{color:var(--muted);font-size:14px;margin:2px 0 0}
+  .lede{font-size:14.5px;color:#4c453d;margin:14px 0 0}
+
+  .jump{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0}
+  .jump a{background:#efe8dc;border-radius:20px;padding:5px 12px;font-size:12.5px;color:#5c5348;
+    white-space:nowrap;text-decoration:none;border:1px solid transparent;transition:all .12s}
+  .jump a:hover{border-color:var(--terra);color:var(--terra)}
+
+  .city{margin-top:30px;padding-top:6px;border-top:3px solid var(--terra)}
+  .cityhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .cityhead .when{color:var(--muted);font-size:13px}
+  .hood{font-size:13.5px;color:#5c5348;margin:6px 0 4px;font-style:italic}
+
+  .block{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .block.base{border-left:5px solid var(--terra)}
+  .block.out{border-left:5px solid var(--gold)}
+  .block h3{font-family:Georgia,serif;font-size:16px;margin:0 0 3px;color:var(--ink)}
+  .block .eyebrow{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  .addr{font-size:12.5px;color:#6b625a;margin:5px 0 0}
+  .conf{margin:11px 0 0;border-top:1px solid var(--line);padding-top:10px;
+    display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:13px}
+  @media(max-width:560px){.conf{grid-template-columns:1fr}}
+  .conf .k{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+  .conf .v{color:var(--ink);font-weight:600;margin-top:1px}
+  .conf .v.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .conf .full{grid-column:1 / -1}
+  .blurb{font-size:13px;color:#4c453d;margin:10px 0 0}
+  .block ul{margin:8px 0 0;padding-left:18px;font-size:13px;color:#453f37}
+  .block li{margin:3px 0}
+
+  .day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0;margin:10px 0;overflow:hidden}
+  .day .dhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:10px 16px;background:#faf7f1;border-bottom:1px solid var(--line)}
+  .day .dnum{font-family:Georgia,serif;font-weight:700;color:var(--terra);font-size:15px;white-space:nowrap}
+  .day .dtag{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:#6b6156;
+    background:#efe8dc;border-radius:20px;padding:2px 9px}
+  .day .dbody{padding:11px 16px 13px;font-size:13.5px;color:#453f37}
+  .day .dbody p{margin:0 0 7px}
+  .day .dbody p:last-child{margin-bottom:0}
+  .day.anchor .dhead{background:#fbf3e6}
+  .day.anchor .dnum{color:#8a6d19}
+
+  .tl{list-style:none;margin:8px 0 0;padding:0;font-size:13px}
+  .tl li{display:flex;gap:10px;padding:4px 0;border-bottom:1px dashed var(--line)}
+  .tl li:last-child{border-bottom:none}
+  .tl .t{font-weight:700;color:var(--terra);white-space:nowrap;min-width:62px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+
+  .res{margin:9px 0 0;padding:8px 11px;background:#f6f3ec;border-radius:9px;font-size:13px;color:#4c453d}
+  .res b{color:var(--ink)}
+  .warn{background:#fdeee9;border:1px solid #f1c7b8;border-radius:10px;padding:10px 13px;margin:10px 0 0;font-size:13px;color:#8f3d22}
+  .tip{background:#fff6e9;border:1px solid #f0dcbb;border-radius:10px;padding:10px 13px;margin:10px 0 0;font-size:13px;color:#7a5a1f}
+  .muted{color:var(--muted)}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:4px;white-space:nowrap}
+  .pill.done{background:#eef4ec;color:#3f6b46}
+  .pill.hold{background:#fbe9e4;color:#a23d21}
+  .pill.book{background:#f6efd9;color:#8a6d19}
+
+  .foot{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;font-size:12.5px;color:var(--muted)}
+  a{color:var(--terra)}
+  @media print{
+    html,body{background:#fff}
+    .nav,.jump{display:none}
+    .wrap{max-width:none;padding:0 6mm}
+    .city{page-break-before:always;border-top:2px solid var(--terra)}
+    .city.first{page-break-before:avoid}
+    .block,.day{page-break-inside:avoid;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav">
+    <span class="brand">España 2026</span>
+    <a href="index.html">Itinerary</a>
+    <a href="Spain_Trip_2026_Schedule.html" class="active">Schedule</a>
+    <a href="Spain_Trip_2026_Hotels_Booked.html">Hotels</a>
+    <a href="Spain_Trip_2026_Dining.html">Dining</a>
+  </nav>
+
+  <h1>Schedule — city by city</h1>
+  <p class="sub">Gabe &amp; Judy · September 26 – October 13, 2026 · 16 nights</p>
+  <p class="lede">Everything you need on the ground, grouped by where you're sleeping. Each city opens with <strong>where you're staying and how you get in</strong>, then runs <strong>day by day</strong>, and closes with <strong>how you leave</strong>. Detail lives on the companion pages: <a href="index.html">Itinerary</a> · <a href="Spain_Trip_2026_Hotels_Booked.html">Hotels</a> · <a href="Spain_Trip_2026_Dining.html">Dining</a>.</p>
+
+  <div class="jump">
+    <a href="#madrid">Madrid</a>
+    <a href="#barcelona">Barcelona</a>
+    <a href="#granada">Granada</a>
+    <a href="#ronda">Ronda</a>
+    <a href="#cordoba">Córdoba</a>
+    <a href="#seville">Seville</a>
+    <a href="#airport">Madrid Airport</a>
+  </div>
+
+  <!-- ══════════ MADRID ══════════ -->
+  <section class="city first" id="madrid">
+    <div class="cityhead"><h2>Madrid</h2><span class="when">Sun Sep 27 → Wed Sep 30 · 3 nights</span></div>
+    <p class="hood">La Latina — on Cava Baja, Madrid's best tapas street, steps from Plaza Mayor.</p>
+
+    <div class="block base">
+      <p class="eyebrow">Getting in</p>
+      <h3>Outbound flights · Sat Sep 26 → Sun Sep 27</h3>
+      <ul>
+        <li><strong>DSM → ATL</strong> — DL2094, depart 4:10 PM Sat Sep 26</li>
+        <li>ATL layover 2h 37m</li>
+        <li><strong>ATL → MAD</strong> — DL0108, depart 9:55 PM</li>
+        <li><strong>Arrive Madrid Sun Sep 27, 12:15 PM</strong> · hotel arrival noted as 1 PM</li>
+      </ul>
+      <div class="tip"><strong>EES biometric registration at MAD on arrival</strong> — the new EU entry/exit system; allow buffer at passport control. ETIAS not required this trip.</div>
+    </div>
+
+    <div class="block base">
+      <p class="eyebrow">Where you're staying</p>
+      <h3>Posada del León de Oro <span class="pill hold">card pending</span></h3>
+      <p class="addr">Calle Cava Baja 12, 28005 Madrid · +34 91 119 14 94</p>
+      <div class="conf">
+        <div><div class="k">Confirmation</div><div class="v mono">MADmzmndczmq-3344731</div></div>
+        <div><div class="k">Dates</div><div class="v">Sun Sep 27 → Wed Sep 30 · 3 nights</div></div>
+        <div><div class="k">Room</div><div class="v">Junior Suite · 2 adults</div></div>
+        <div><div class="k">Price</div><div class="v">€804.95 · non-refundable</div></div>
+        <div class="full"><div class="k">Check in / out</div><div class="v">3 PM / before 12 PM</div></div>
+      </div>
+      <div class="warn"><strong>Unresolved:</strong> the original booking was cancelled after the card was declined. Rebooked Jul 27 under the ref above — <strong>not confirmed as paid until the hotel runs the card.</strong> Follow up: info@posadadelleondeoro.com · +34 911 191 494.</div>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Sun Sep 27</span><span class="dtag">Arrival day</span></div>
+      <div class="dbody">
+        <p>Land 12:15, into the hotel around 1 PM. Catch the tail of <strong>El Rastro</strong> (the flea market ends at 15:00), vermut at <strong>Bodegas Ricla</strong>.</p>
+        <div class="res"><b>Botín 15:30</b> — booked, 2 people. Card on file; free to cancel to 12 h before, then €50. +34 913 664 217</div>
+        <p style="margin-top:8px">Evening: <strong>tapas on Cava Baja</strong> — no booking, it's the street you're sleeping on.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Mon Sep 28</span><span class="dtag">Historic center</span></div>
+      <div class="dbody">
+        <p>Historic center and the <strong>Royal Palace</strong>, tapas through the afternoon.</p>
+        <div class="res"><b>TriCiclo 20:30</b> — booked, 2 persons. 90-minute table. +34 910 244 798</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Tue Sep 29</span><span class="dtag">Museums &amp; park</span></div>
+      <div class="dbody">
+        <p><strong>National Archaeology Museum</strong>, then <strong>Retiro Park</strong>.</p>
+        <p>Evening: <strong>tapas on Calle de Jesús</strong> — no booking. Barrio de las Letras, by the Prado, ~15 min walk. <span class="muted">(Casa Mortero was cancelled Sep 18, no charge — this night is deliberately open.)</span></p>
+      </div>
+    </div>
+
+    <div class="block out">
+      <p class="eyebrow">Leaving Madrid</p>
+      <h3>AVE 03303 → Barcelona · Wed Sep 30 <span class="pill done">booked</span></h3>
+      <div class="conf">
+        <div><div class="k">Depart</div><div class="v">Madrid P. Atocha 10:27</div></div>
+        <div><div class="k">Arrive</div><div class="v">Barcelona-Sants 13:44</div></div>
+        <div><div class="k">Seats</div><div class="v">Prémium/Confort · Coach 1 · 6B &amp; 6C</div></div>
+        <div><div class="k">Locator</div><div class="v mono">48VNTZ</div></div>
+      </div>
+      <p class="blurb">Check out before 12 PM — but you're on a 10:27 train, so plan the bags the night before. Atocha is a ~10 min taxi from Cava Baja.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ BARCELONA ══════════ -->
+  <section class="city" id="barcelona">
+    <div class="cityhead"><h2>Barcelona</h2><span class="when">Wed Sep 30 → Sat Oct 3 · 3 nights</span></div>
+    <p class="hood">Eixample — between Diagonal and Passeig de Gràcia, ~10 min to La Pedrera &amp; Casa Batlló.</p>
+
+    <div class="block base">
+      <p class="eyebrow">Where you're staying</p>
+      <h3>Ohla Eixample <span class="pill done">confirmed</span></h3>
+      <p class="addr">Carrer de Còrsega 289, 08008 Barcelona</p>
+      <div class="conf">
+        <div><div class="k">Booking ID</div><div class="v mono">a9pga2dae2</div></div>
+        <div><div class="k">Dates</div><div class="v">Wed Sep 30 → Sat Oct 3 · 3 nights</div></div>
+        <div><div class="k">Room</div><div class="v">Design · Bed &amp; Breakfast · 2 adults</div></div>
+        <div><div class="k">Price</div><div class="v">€1,298.50 prepaid + €79.20 city tax at hotel</div></div>
+        <div class="full"><div class="k">Check in / out</div><div class="v">3 PM / before 12 PM</div></div>
+      </div>
+      <p class="blurb"><strong>The rooftop is the reason you're here</strong> — heated infinity pool and cocktail bar with 360° views including the Sagrada Família. Make time for a sundowner. Anniversary note on file (experience@ohlaeixample.com). Breakfast is included at this hotel — the only one on the trip.</p>
+      <p class="blurb muted">Getting in from Sants: ~15 min taxi, or Metro L5/L3.</p>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Wed Sep 30</span><span class="dtag">Arrival · Gothic Quarter</span></div>
+      <div class="dbody">
+        <p>In at Sants 13:44, drop bags at the Ohla, then the <strong>Gothic Quarter</strong> on foot for the rest of the afternoon.</p>
+        <div class="res"><b>Mont Bar 21:45</b> ⭐⭐ — booked, 2 guests, Interior. <b>21:45 is a hard 21:45</b> — the table is released 15 minutes after. Cancellation inside 72 h is €190 pp / €380. +34 933 239 590</div>
+      </div>
+    </div>
+
+    <div class="day anchor">
+      <div class="dhead"><span class="dnum">Thu Oct 1</span><span class="dtag">⚑ Sagrada Família day</span></div>
+      <div class="dbody">
+        <p><strong>The fullest day of the trip.</strong> Two booked blocks bracket the afternoon — keep the middle loose and skip the long lunch.</p>
+        <ul class="tl">
+          <li><span class="t">11:00</span><span><strong>Jamón Experience</strong> — MasterPlus ham, wine &amp; cheese tasting, 2 adults, ends 12:30. Passatge Simó 26 (Camp d'en Grassot) — ~15 min walk from the hotel, ~10 min from the Sagrada Família. Booking #379920909 · €89 pp · +34 699 758 595</span></li>
+          <li><span class="t">15:00</span><span><strong>Basilica entry via C/ Marina</strong> (Nativity façade side). No re-entry — eat beforehand.</span></li>
+          <li><span class="t">15:45</span><span><strong>English guided tour</strong>, ~50 min, ends ~16:35.</span></li>
+          <li><span class="t">17:30</span><span><strong>The golden window</strong> (~17:30–18:45) — free in the nave as the western Passion-side glass floods it red and orange. Out ~18:45.</span></li>
+          <li><span class="t">~19:15</span><span>Rooftop cocktail at the Ohla. <strong>Leave the rooftop by ~21:00.</strong></span></li>
+        </ul>
+        <div class="res"><b>Brugarol 21:30–23:30</b> — booked, 2 guests, window bar, Menú En Flor. Gothic Quarter, ~15 min taxi from the hotel. Ref VTKN33RP97Z · tell them 24 h ahead if anything changes.</div>
+        <div class="warn"><strong>Bring your passports</strong> — the Sagrada Família ticket is non-transferable and official photo ID is required at the door. <strong>Download the "Sagrada Família Oficial" app on both phones before you arrive</strong> — the tickets and audioguide are delivered through the app, not by email. Locator 104252067 · 2 × €30. No tower on this ticket.</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Fri Oct 2</span><span class="dtag">Food &amp; walking</span></div>
+      <div class="dbody">
+        <p>An open day on foot — food and wandering, nothing ticketed.</p>
+        <div class="res"><b>Paco Meralgo — walk in at the bar.</b> The restaurant cancelled the booking (no tables for 2 at 18:00); the bar is first come, no reservations.</div>
+        <div class="tip"><strong>Deadline tonight:</strong> Atelier – Casa de Comidas (Granada, Oct 3) is free to cancel only until <strong>20:45 today</strong>. After that it's €120. Decide before then whether Faralá has come through.</div>
+      </div>
+    </div>
+
+    <div class="block out">
+      <p class="eyebrow">Leaving Barcelona</p>
+      <h3>Vueling VY2012 → Granada · Sat Oct 3 <span class="pill done">booked</span></h3>
+      <div class="conf">
+        <div><div class="k">Depart</div><div class="v">BCN 11:50</div></div>
+        <div><div class="k">Arrive</div><div class="v">GRX 13:25 · nonstop 1h35</div></div>
+        <div><div class="k">Booking code</div><div class="v mono">LLW44D</div></div>
+        <div><div class="k">Seats</div><div class="v">5B (Gabe) · 5C (Judy)</div></div>
+      </div>
+      <ul>
+        <li><strong>Leave the hotel ~09:30.</strong> Check-in desks close 40 min before departure; boarding closes 20 min before.</li>
+        <li><strong>Baggage:</strong> Fly bundle = 1 underseat bag + 1 × 25 kg checked bag each. <strong>No overhead cabin bag included</strong> — a second hand item or an oversized underseat bag is charged at the gate, up to €75.</li>
+        <li>GRX is ~17 km west of Granada — ALSA airport bus (~45 min, timed to arrivals) or taxi (~25–30 min). <strong>At Casa 1800 around 14:30.</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════════ GRANADA ══════════ -->
+  <section class="city" id="granada">
+    <div class="cityhead"><h2>Granada</h2><span class="when">Sat Oct 3 → Tue Oct 6 · 3 nights</span></div>
+    <p class="hood">Foot of the Albaicín by Plaza Nueva — ideal for the Alhambra day and Albaicín evenings.</p>
+
+    <div class="block base">
+      <p class="eyebrow">Where you're staying</p>
+      <h3>Hotel Casa 1800 Granada <span class="pill done">confirmed</span></h3>
+      <p class="addr">C/ Benalúa 11, 18010 Granada · +34 958 21 07 00</p>
+      <div class="conf">
+        <div><div class="k">Booking code</div><div class="v mono">26072751730</div></div>
+        <div><div class="k">Dates</div><div class="v">Sat Oct 3 → Tue Oct 6 · 3 nights</div></div>
+        <div><div class="k">Room</div><div class="v">Superior · Room only · 2 adults</div></div>
+        <div><div class="k">Price</div><div class="v">€1,117.20 · prepaid in full</div></div>
+        <div class="full"><div class="k">Check in / out</div><div class="v">3 PM / 12 PM · <span class="muted">no breakfast — room only</span></div></div>
+      </div>
+      <p class="blurb">Restored 16th-c. mansion at the foot of the Albaicín. Anniversary note on file. <strong>~20 min walk to Granada train station</strong> (where the rental car is picked up Oct 5), or a €7 taxi.</p>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Sat Oct 3</span><span class="dtag">Arrival · settle in</span></div>
+      <div class="dbody">
+        <p>In around 14:30. <strong>Deliberately easy</strong> — settle in and rest before the Alhambra day.</p>
+        <div class="res"><b>Atelier – Casa de Comidas 20:45</b> — booked, 2 people. 2026 Bib Gourmand, ~15 min out from the centre. Degustación de temporada €60 pp. Card on file; free cancel only to <b>Fri Oct 2, 20:45</b>, then €120. +34 858 708 057</div>
+        <div class="res" style="margin-top:7px"><b>Faralá</b> <span class="pill hold">waiting</span> — the site shows a 20:00 seating but errors out as sold out and the waitlist is closed. Emailed Sep 18; Atelier holds the night meanwhile.</div>
+      </div>
+    </div>
+
+    <div class="day anchor">
+      <div class="dhead"><span class="dnum">Sun Oct 4</span><span class="dtag">⚑ Full Alhambra day — the anchor</span></div>
+      <div class="dbody">
+        <ul class="tl">
+          <li><span class="t">08:30</span><span>Arrive as the complex opens.</span></li>
+          <li><span class="t">AM</span><span><strong>Alcazaba</strong> → <strong>Generalife gardens</strong> → <strong>Palace of Charles V</strong>.</span></li>
+          <li><span class="t">Lunch</span><span>On site or just outside — don't cut it close to the 14:30 walk.</span></li>
+          <li><span class="t">14:30</span><span>Walk to the Nasrid Palace entrance.</span></li>
+          <li><span class="t">15:00</span><span><strong>Timed Nasrid Palace entry</strong> — the one hard time of the day.</span></li>
+          <li><span class="t">Sunset</span><span><strong>Mirador de San Nicolás</strong> in the Albaicín.</span></li>
+        </ul>
+        <div class="res"><b>El Trillo 21:30</b> — booked, 2 people, <b>Terraza Mirador</b> (the Alhambra-view terrace). No card held. <b>Tables must be vacated by 24:00.</b> Deeper into the Albaicín — steep, stepped, poorly lit lanes, so wear shoes with grip. +34 958 225 182</div>
+        <div class="warn"><strong>Bring your original passports today.</strong> Alhambra tickets are personal and non-transferable; staff may check ID before the Nasrid Palaces. <strong>Do not leave the passports in the hotel safe.</strong></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Mon Oct 5</span><span class="dtag">Guadix day · car pickup</span></div>
+      <div class="dbody">
+        <p><strong>Pick up the rental car at 09:00</strong> (see "Leaving Granada" below — the car is collected today, not on departure day). ~2 h total driving.</p>
+        <ul>
+          <li><strong>Guadix</strong> — cave quarter, miradores, cathedral</li>
+          <li><strong>Altiplano winery visit + long lunch</strong> <span class="muted">(book ahead — names and booking on the <a href="Spain_Trip_2026_Dining.html">Dining page</a>)</span></li>
+          <li><strong>La Calahorra Castle — exterior viewpoint only.</strong> The interior opens Fri–Sun and today is a Monday; the Oct 4↔5 flip was dropped for good.</li>
+          <li>Back to Granada for a slow Albaicín evening</li>
+        </ul>
+        <div class="tip"><strong>By 20:00 tonight, Bardal locks.</strong> Confirm the menu choice and any allergies for Wed Oct 7 — cancelling inside 24 h charges €390.</div>
+      </div>
+    </div>
+
+    <div class="block out">
+      <p class="eyebrow">Leaving Granada</p>
+      <h3>Rental car — Enterprise · picked up Mon Oct 5 <span class="pill done">booked</span></h3>
+      <div class="conf">
+        <div><div class="k">Confirmation</div><div class="v mono">2132632733</div></div>
+        <div><div class="k">Car</div><div class="v">Mercedes A-Class or similar · automatic</div></div>
+        <div><div class="k">Pick up</div><div class="v">Granada Train Station · Sun Oct 5, 09:00</div></div>
+        <div><div class="k">Drop off</div><div class="v">Sevilla Santa Justa · Sat Oct 10, 19:00</div></div>
+        <div class="full"><div class="k">Cost</div><div class="v">$424.91 / €366.78 due at the counter · nothing prepaid · unlimited mileage</div></div>
+      </div>
+      <p class="blurb">Avda. de Andaluces 20. Sunday hours are 09:00–18:00, so the booking is <strong>exactly at opening</strong> — ~20 min walk from Casa 1800 or a €7 taxi.</p>
+      <ul>
+        <li><strong>Add Judy to the agreement</strong> if she will drive — required for the credit-card insurance to cover her; an unlisted driver voids the claim. <span class="pill book">to do</span></li>
+        <li><strong>Insurance: credit card coverage — decline the counter upsell.</strong> Carry the benefit administrator's letter of coverage. Expect a €1,000–1,975 hold on Gabriel's card, which must also be the card that pays.</li>
+        <li>Credit card in Gabriel's name required at pickup — a debit card will likely be refused. <strong>IDP required</strong> for both drivers.</li>
+        <li><strong>Photograph the car at pickup and at drop-off</strong> — card coverage is reimbursement, so keep the agreement, damage report and photos.</li>
+      </ul>
+      <p class="blurb"><strong>Tue Oct 6, drive Granada → Ronda</strong> via Antequera &amp; El Torcal — dolmens, karst walk, lunch in Antequera.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ RONDA ══════════ -->
+  <section class="city" id="ronda">
+    <div class="cityhead"><h2>Ronda</h2><span class="when">Tue Oct 6 → Thu Oct 8 · 2 nights</span></div>
+    <p class="hood">Town centre by the bullring, ~2 min to the Puente Nuevo.</p>
+
+    <div class="block base">
+      <p class="eyebrow">Where you're staying</p>
+      <h3>Catalonia Ronda <span class="pill done">free cancel to Oct 5</span></h3>
+      <p class="addr">Town centre by the Plaza de Toros, Ronda</p>
+      <div class="conf">
+        <div><div class="k">Booking code</div><div class="v mono">C2026072623393777016</div></div>
+        <div><div class="k">Dates</div><div class="v">Tue Oct 6 → Thu Oct 8 · 2 nights</div></div>
+        <div><div class="k">Room</div><div class="v">Superior · Room only · 2 adults</div></div>
+        <div><div class="k">Price</div><div class="v">€604.50 paid · €0 at hotel</div></div>
+      </div>
+      <p class="blurb">Protected modernist building with a rooftop infinity pool and spa over the Tajo gorge. <strong>The only flexible booking on the trip</strong> — free cancellation until Oct 5. Bardal is 5 minutes away on foot.</p>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Tue Oct 6</span><span class="dtag">Drive in via Antequera</span></div>
+      <div class="dbody">
+        <p>Drive Granada → Ronda with the day built around the stop: <strong>Antequera dolmens</strong> and <strong>El Torcal</strong> — the karst walk — and lunch in Antequera.</p>
+        <p>Evening in Ronda: <strong>Tragatá</strong> <span class="muted">(Bardal is closed Tuesdays)</span>.</p>
+        <div class="warn"><strong>20:00 tonight is the Bardal deadline</strong> — menu choice and allergies must be confirmed, and it's the last moment to cancel without the €390 charge.</div>
+      </div>
+    </div>
+
+    <div class="day anchor">
+      <div class="dhead"><span class="dnum">Wed Oct 7</span><span class="dtag">⚑ White villages day</span></div>
+      <div class="dbody">
+        <p><strong>Zahara de la Sierra is the anchor</strong> — the scenic drive up over the <strong>Puerto de las Palomas</strong> pass, the climb to the Moorish castle keep above the turquoise reservoir, and a long lunch in the village.</p>
+        <p>If the day has legs, pair it with <strong>Grazalema</strong> or <strong>Setenil de las Bodegas</strong> (houses built under the rock) and a local Serranía de Ronda winery.</p>
+        <div class="res"><b>Bardal 20:00</b> ⭐⭐ — booked, 2 persons, Menú Bardal, 17 courses, €195 pp. <b>The only night it's open</b> (closed Sun–Tue). Be back in Ronda with time to change — don't roll in at 19:45. +34 951 489 828</div>
+      </div>
+    </div>
+
+    <div class="block out">
+      <p class="eyebrow">Leaving Ronda</p>
+      <h3>Drive → Córdoba · Thu Oct 8</h3>
+      <p class="blurb">By car, the same Enterprise A-Class. No fixed departure time and nothing booked en route — this is the loosest transfer of the trip, so let the morning in Ronda run long if it wants to.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ CÓRDOBA ══════════ -->
+  <section class="city" id="cordoba">
+    <div class="cityhead"><h2>Córdoba</h2><span class="when">Thu Oct 8 → Sat Oct 10 · 2 nights</span></div>
+    <p class="hood">In the Judería, ~2 min from the Mezquita.</p>
+
+    <div class="block base">
+      <p class="eyebrow">Where you're staying</p>
+      <h3>Hotel Las Casas de la Judería de Córdoba <span class="pill done">confirmed</span></h3>
+      <p class="addr">Calle Tomás Conde 10, 14004 Córdoba · +34 957 202 095</p>
+      <div class="conf">
+        <div><div class="k">Booking ref</div><div class="v mono">504F368A9</div></div>
+        <div><div class="k">Dates</div><div class="v">Thu Oct 8 → Sat Oct 10 · 2 nights</div></div>
+        <div><div class="k">Room</div><div class="v">Room Basic · Room only · 2 adults</div></div>
+        <div><div class="k">Price</div><div class="v">€549 · <span class="muted">voucher showed "pending" — confirm the charge</span></div></div>
+        <div class="full"><div class="k">Check in / out</div><div class="v">2 PM / 12 PM</div></div>
+      </div>
+      <p class="blurb">Interconnected 15th-c. palace houses — a labyrinth of patios, under 5 minutes from the Mezquita. Anniversary note on file. <strong>Parking:</strong> the car stays with you here; ask the hotel about the nearest garage, the Judería is largely pedestrian.</p>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Thu Oct 8</span><span class="dtag">Drive in</span></div>
+      <div class="dbody">
+        <p>Drive Ronda → Córdoba, into the Judería. Evening open — the Mezquita quarter after dark and the Roman bridge are both on your doorstep.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Fri Oct 9</span><span class="dtag">Mezquita &amp; Old Town</span></div>
+      <div class="dbody">
+        <p><strong>Mezquita-Catedral</strong> and the Old Town. <span class="pill book">still to book</span> — low urgency, but worth securing a morning slot.</p>
+        <div class="res"><b>Noor 20:30</b> ⭐⭐⭐ — booked, 2 persons. Menú Fath confirmed for both by email Sep 17. Taxi, ~3–4 km east of the Judería. Card on file: <b>€120 pp if cancelled or the party is reduced inside 48 h.</b> +34 957 964 055</div>
+        <div class="warn"><strong>Noor has a dress code:</strong> formal — long trousers and closed-toe shoes, no sportswear. <strong>Pack for it.</strong></div>
+      </div>
+    </div>
+
+    <div class="block out">
+      <p class="eyebrow">Leaving Córdoba</p>
+      <h3>Drive → Seville via Carmona · Sat Oct 10</h3>
+      <p class="blurb">~1h30 direct, but the day is built around <strong>Carmona</strong> — a hilltop town directly on the A-4, ~35 min short of Seville. Near-free on a drive you're already making.</p>
+      <ul>
+        <li><strong>Necrópolis Romana</strong> — rock-cut tombs (Elefante, Servilia)</li>
+        <li><strong>Alcázar de la Puerta de Sevilla</strong> — Carthaginian → Roman → Moorish in one gate-fortress</li>
+        <li>Long lunch in the old town, then on to Seville late afternoon</li>
+      </ul>
+      <div class="warn"><strong>Drop the car at Sevilla Santa Justa by 19:00</strong> — Parking P3, desk open to 21:00 Saturdays. Dropping <em>before</em> entering the city keeps you out of the old-town ZBE entirely: no plate registration, no parking problem. Photograph the car at drop-off and keep the damage report. Then taxi to Gravina 51, ~10 min / €8–10.</div>
+    </div>
+  </section>
+
+  <!-- ══════════ SEVILLE ══════════ -->
+  <section class="city" id="seville">
+    <div class="cityhead"><h2>Seville</h2><span class="when">Sat Oct 10 → Mon Oct 12 · 2 nights</span></div>
+    <p class="hood">Central Arenal–Museo area, walkable to the cathedral &amp; old town. <strong>Seville is done on foot</strong> — the car is gone.</p>
+
+    <div class="block base">
+      <p class="eyebrow">Where you're staying</p>
+      <h3>Hotel Gravina 51 <span class="pill done">confirmed</span></h3>
+      <p class="addr">Calle Gravina 51, Sevilla · +34 954 217 501</p>
+      <div class="conf">
+        <div><div class="k">Booking ID</div><div class="v mono">nd3936uzm1</div></div>
+        <div><div class="k">Dates</div><div class="v">Sat Oct 10 → Mon Oct 12 · 2 nights</div></div>
+        <div><div class="k">Room</div><div class="v">Preferential · Room only · 2 adults</div></div>
+        <div><div class="k">Price</div><div class="v">€691.14 · prepaid in full</div></div>
+      </div>
+      <p class="blurb"><strong>Perks:</strong> pool access at Cavalta Boutique Hotel plus a welcome cocktail; early check-in / late checkout subject to availability — <strong>ask about late checkout for Oct 12</strong>, and they'll hold the bags either way.</p>
+    </div>
+
+    <div class="day">
+      <div class="dhead"><span class="dnum">Sat Oct 10</span><span class="dtag">Arrival · Plaza de España</span></div>
+      <div class="dbody">
+        <p>In from Carmona late afternoon, car dropped at Santa Justa ~19:00, taxi to the hotel. <strong>Plaza de España</strong> and evening tapas — no booking.</p>
+      </div>
+    </div>
+
+    <div class="day anchor">
+      <div class="dhead"><span class="dnum">Sun Oct 11</span><span class="dtag">⚑ Royal Alcázar day</span></div>
+      <div class="dbody">
+        <ul class="tl">
+          <li><span class="t">11:00</span><span><strong>Enter via the Puerta del León.</strong> Entry is permitted from 60 min before the ticket time — do <em>not</em> arrive at opening, the ticket won't admit you before 11:00.</span></li>
+          <li><span class="t">11:00</span><span><strong>Short garden loop only</strong> — Patio del Crucero, Estanque de Mercurio, Jardín de la Danza. Stay close; save the far end (Marchena, the Alcoba, the maze) for later.</span></li>
+          <li><span class="t">11:45</span><span><strong>Be at the Royal Upper Rooms</strong> — the ticket requires arriving 15 min early.</span></li>
+          <li><span class="t">12:00</span><span><strong>Cuarto Real Alto guided visit</strong>, ~25–30 min, small group. <b>12:00 is the Upper Rooms time, not general admission.</b></span></li>
+          <li><span class="t">12:30</span><span><strong>The full gardens</strong>, unhurried, as the morning tour groups cycle out.</span></li>
+          <li><span class="t">15:30</span><span>Late lunch outside, in Santa Cruz or Barrio del Arenal.</span></li>
+          <li><span class="t">16:00</span><span><strong>Back into the palaces for the last hour</strong> — the quietest stretch, best light through the Mudéjar plasterwork.</span></li>
+          <li><span class="t">17:00</span><span>Close · site cleared 17:45 → out into Santa Cruz at golden hour for a wander and tapas.</span></li>
+        </ul>
+        <div class="warn"><strong>Bring your original passports.</strong> Alcázar tickets are nominative — each visitor presents their passport <em>with</em> the ticket at access control. Names on file: Gabriel Johnson (A80168024) and Judy Johnson (583520368). <strong>No changes or refunds</strong>, so a mismatch can't be fixed on the day. €42 total · purchase no. 24462546. No food or drink inside except water; winter hours from Oct 1 are 09:30–17:00.</div>
+        <div class="tip"><strong>Two things most guidebooks miss.</strong> The <strong>Estanque de Mercurio</strong> restoration is complete — an Almohad water reservoir reworked in the Renaissance into an ornamental pond, Moorish infrastructure turned into Christian display. And a long-disused corridor linking the <strong>Patio de las Muñecas to the Jardín del Príncipe</strong> has just reopened with its tilework and plasterwork recovered — seek it out.</div>
+      </div>
+    </div>
+
+    <div class="block out">
+      <p class="eyebrow">Leaving Seville</p>
+      <h3>Mon Oct 12 — Cathedral morning, then AVE 02191 → Madrid <span class="pill done">booked</span></h3>
+      <p class="blurb"><strong>Morning:</strong> Cathedral &amp; Giralda. No car — check out and the hotel holds the bags. <strong>Afternoon:</strong> tapas crawl. <strong>~18:30:</strong> taxi to Santa Justa.</p>
+      <div class="conf">
+        <div><div class="k">Depart</div><div class="v">Sevilla Santa Justa 19:32</div></div>
+        <div><div class="k">Arrive</div><div class="v">Madrid P. Atocha 22:10</div></div>
+        <div><div class="k">Seats</div><div class="v">Prémium/Confort · Coach 1 · 7B (Judy) &amp; 7C (Gabe)</div></div>
+        <div><div class="k">Locator</div><div class="v mono">65ZXGM</div></div>
+        <div class="full"><div class="k">Onward to the hotel</div><div class="v">Free Cercanías, Atocha → Aeropuerto T4 · codes <span class="mono">FJ3TU</span> (Gabe) · <span class="mono">RDTTB</span> (Judy)</div></div>
+      </div>
+      <p class="blurb"><strong>Dinner is served onboard</strong> — don't plan a sit-down meal before the train.</p>
+      <p class="blurb muted">Itálica is dropped entirely — it's closed Mondays, and Oct 12 is the only morning it could have taken. Carmona carries the Roman layer on this leg.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ MADRID AIRPORT ══════════ -->
+  <section class="city" id="airport">
+    <div class="cityhead"><h2>Madrid Airport</h2><span class="when">Mon Oct 12 → Tue Oct 13 · 1 night</span></div>
+    <p class="hood">By Barajas, near T4 for the flight home.</p>
+
+    <div class="block base">
+      <p class="eyebrow">Where you're staying</p>
+      <h3>Hilton Madrid Airport <span class="pill done">Honors reward</span></h3>
+      <p class="addr">Avenida de la Hispanidad 2-4, 28042 Madrid · +34 911 534 000</p>
+      <div class="conf">
+        <div><div class="k">Confirmation</div><div class="v mono">3504529261</div></div>
+        <div><div class="k">Dates</div><div class="v">Mon Oct 12 → Tue Oct 13 · 1 night</div></div>
+        <div><div class="k">Room</div><div class="v">King Guestroom · 2 adults</div></div>
+        <div><div class="k">Price</div><div class="v">€158.75 · Hilton Honors reward (Silver #1428934820)</div></div>
+        <div class="full"><div class="k">Getting there</div><div class="v">AVE lands Atocha 22:10 → Cercanías to Aeropuerto T4 (FJ3TU / RDTTB) → hotel</div></div>
+      </div>
+      <p class="blurb">A late arrival — you'll be checking in close to 23:00. Check-out 12 PM, well after the flight.</p>
+    </div>
+
+    <div class="block out">
+      <p class="eyebrow">Going home</p>
+      <h3>Return flights · Tue Oct 13</h3>
+      <ul>
+        <li><strong>MAD → AMS</strong> — DL9613, depart <strong>10:25 AM</strong></li>
+        <li>AMS layover 1h 30m</li>
+        <li><strong>AMS → DTW</strong> — DL0137</li>
+        <li>DTW layover 2h 36m</li>
+        <li><strong>DTW → DSM</strong> — DL5087 · <strong>arrive DSM 8:52 PM</strong></li>
+      </ul>
+      <p class="blurb">The hotel is at T4 — but it's an international departure on a 10:25 flight, so plan to be at the terminal by ~07:30. <strong>EES exit registration</strong> may add time at the border.</p>
+    </div>
+  </section>
+
+  <div class="foot">
+    Reorganized from the <a href="index.html">itinerary</a>, <a href="Spain_Trip_2026_Hotels_Booked.html">hotels</a> and <a href="Spain_Trip_2026_Dining.html">dining</a> pages — no new facts, just regrouped by city. The working itinerary markdown stays the source of truth; this page is derived from it.
+  </div>
+
+</div>
+</body>
+</html>
